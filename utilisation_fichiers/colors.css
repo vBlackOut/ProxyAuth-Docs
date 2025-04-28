@@ -1,0 +1,271 @@
+/************************************
+    File Name: colors.css
+    Template Name: Helper
+    Created By: Similar Icons
+    Envato Profile: http://themeforest.net/user/similaricons
+    Website: https://similaricons.com
+    Version: 1.0
+************************************/
+
+
+/* PRIMARY COLOR */
+
+.form-control,
+.form-group .form-control {
+    border: 0;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#303F9F), to(#303F9F)), -webkit-gradient(linear, left top, left bottom, from(#bdbdbd), to(#bdbdbd));
+    background-image: -webkit-linear-gradient(#303F9F, #303F9F), -webkit-linear-gradient(#bdbdbd, #bdbdbd);
+    background-image: -o-linear-gradient(#303F9F, #303F9F), -o-linear-gradient(#bdbdbd, #bdbdbd);
+    background-image: linear-gradient(#303F9F, #303F9F), linear-gradient(#bdbdbd, #bdbdbd);
+}
+
+.form-group.is-focused .form-control {
+    outline: none;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#303F9F), to(#303F9F)), -webkit-gradient(linear, left top, left bottom, from(#bdbdbd), to(#bdbdbd));
+    background-image: -webkit-linear-gradient(#303F9F, #303F9F), -webkit-linear-gradient(#bdbdbd, #bdbdbd);
+    background-image: -o-linear-gradient(#303F9F, #303F9F), -o-linear-gradient(#bdbdbd, #bdbdbd);
+    background-image: linear-gradient(#303F9F, #303F9F), linear-gradient(#bdbdbd, #bdbdbd);
+}
+
+a,
+a:hover,
+a:focus,
+.btn:not(.btn-raised).btn-primary,
+.input-group-btn .btn:not(.btn-raised).btn-primary,
+.checkbox input[type=checkbox]:checked + .checkbox-material .check,
+label.checkbox-inline input[type=checkbox]:checked + .checkbox-material .check,
+.checkbox input[type=checkbox]:checked + .checkbox-material .check:before,
+label.checkbox-inline input[type=checkbox]:checked + .checkbox-material .check:before,
+.form-group.is-focused label,
+.form-group.is-focused label.control-label,
+.navbar .dropdown-menu li > a:hover,
+.navbar.navbar-default .dropdown-menu li > a:hover,
+.navbar .dropdown-menu li > a:focus,
+.navbar.navbar-default .dropdown-menu li > a:focus,
+.navbar.navbar-primary .dropdown-menu li > a:hover,
+.navbar.navbar-primary .dropdown-menu li > a:focus,
+.dropdown-menu li a:hover,
+.text-primary {
+    color: #303F9F;
+}
+
+body.doc_wrapper #sideBar,
+.nav-tabs,
+body .container .well-primary,
+body .container-fluid .well-primary,
+body .container .jumbotron-primary,
+body .container-fluid .jumbotron-primary,
+.btn.btn-raised.btn-primary,
+.input-group-btn .btn.btn-raised.btn-primary,
+.btn.btn-fab.btn-primary,
+.input-group-btn .btn.btn-fab.btn-primary,
+.btn-group-raised .btn.btn-primary,
+.btn-group-raised .input-group-btn .btn.btn-primary,
+.btn-group.open > .dropdown-toggle.btn.btn-primary,
+.btn-group-vertical.open > .dropdown-toggle.btn.btn-primary,
+.radio input[type=radio]:checked ~ .check,
+label.radio-inline input[type=radio]:checked ~ .check,
+.label.label-primary,
+.radio .check,
+label.radio-inline .check,
+.togglebutton label input[type=checkbox]:checked + .toggle:after,
+.form-group.is-focused .form-control .material-input:after,
+.navbar.navbar-default,
+.navbar,
+.navbar.navbar-primary,
+.navbar .dropdown-menu .active > a,
+.navbar.navbar-default .dropdown-menu .active > a,
+.navbar.navbar-primary .dropdown-menu .active > a,
+.alert.alert-primary,
+.progress .progress-bar,
+.progress .progress-bar.progress-bar-default,
+.progress .progress-bar.progress-bar-primary,
+.panel.panel-primary > .panel-heading,
+.slider.noUi-connect,
+.slider.slider-default.noUi-connect,
+.slider.slider-primary.noUi-connect,
+.slider .noUi-connect,
+.slider.slider-default .noUi-connect,
+.slider.slider-primary .noUi-connect,
+.slider .noUi-handle,
+.slider.slider-default .noUi-handle,
+.slider.slider-primary .noUi-handle {
+    background-color: #485E88;
+}
+
+.checkbox .checkbox-material .check,
+label.checkbox-inline .checkbox-material .check {
+    border-color: #bdbdbd;
+}
+
+.checkbox input[type="checkbox"]:checked + .checkbox-material .check,
+label.checkbox-inline input[type="checkbox"]:checked + .checkbox-material .check,
+.radio input[type=radio]:checked ~ .circle,
+label.radio-inline input[type=radio]:checked ~ .circle,
+.slider .noUi-handle,
+.slider.slider-default .noUi-handle,
+.slider.slider-primary .noUi-handle {
+    border-color: #303F9F;
+}
+
+.nav-tabs {
+    background: #000;
+}
+
+
+/* PRIMARY ALTERNATIVE */
+
+body.doc_wrapper .main-nav li.nav-brand,
+.navbar .navbar-nav > .active > a,
+.navbar .navbar-nav > .active > a:hover,
+.navbar .navbar-nav > .active > a:focus,
+.btn.btn-raised.btn-primary:hover:not(.btn-link),
+.input-group-btn .btn.btn-raised.btn-primary:hover:not(.btn-link),
+.btn-group-raised .btn.btn-primary:hover:not(.btn-link),
+.btn-group-raised .input-group-btn .btn.btn-primary:hover:not(.btn-link),
+.btn.btn-raised.btn-primary:focus:not(.btn-link),
+.input-group-btn .btn.btn-raised.btn-primary:focus:not(.btn-link),
+.btn-group-raised .btn.btn-primary:focus:not(.btn-link),
+.btn-group-raised .input-group-btn .btn.btn-primary:focus:not(.btn-link),
+.btn.btn-raised.active.btn-primary:not(.btn-link),
+.input-group-btn .btn.btn-raised.active.btn-primary:not(.btn-link),
+.btn-group-raised .btn.active.btn-primary:not(.btn-link),
+.btn-group-raised .input-group-btn .btn.active.btn-primary:not(.btn-link),
+.btn.btn-raised.btn-primary:active:not(.btn-link),
+.input-group-btn .btn.btn-raised.btn-primary:active:not(.btn-link),
+.btn-group-raised .btn.btn-primary:active:not(.btn-link),
+.btn-group-raised .input-group-btn .btn.btn-primary:active:not(.btn-link),
+.bg1 {
+    background-color: #2a4a86;
+}
+
+
+/* SECOND COLOR */
+
+.alert-danger-red, .navbar .dropdown-menu li > a:hover, .navbar.navbar-default .dropdown-menu li > a:hover, .navbar .dropdown-menu li > a:focus, .navbar.navbar-default .dropdown-menu li > a:focus, .closed a, .pagination a:hover, .pagination a:focus, .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus, .tags a:hover {
+  background-color: #9B2F2F !important;
+  border-color: #9B2F2F !important;
+  color: #ffffff !important;
+}
+
+.alert-danger,
+.navbar .dropdown-menu li > a:hover,
+.navbar.navbar-default .dropdown-menu li > a:hover,
+.navbar .dropdown-menu li > a:focus,
+.navbar.navbar-default .dropdown-menu li > a:focus,
+.closed a,
+.pagination a:hover,
+.pagination a:focus,
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus,
+.tags a:hover {
+    background-color: #485E88 !important;
+    border-color: #485E88 !important;
+    color: #ffffff !important;
+}
+
+.contact-widget hr {
+    border-color: #E91E63 !important;
+}
+
+.contact-widget i,
+.contact-widget a,
+.widget .custom-module .list-group .list-group-item .list-group-item-heading.active a,
+.custom-module .readmore,
+.module-title i,
+.chat-logo i,
+body.doc_wrapper .main-nav li.nav-brand i,
+.readmore,
+.navbar .navbar-brand i {
+    color: #E91E63;
+}
+
+.topbar,
+.topic-title::after,
+.btn.btn-raised,
+.input-group-btn .btn.btn-raised,
+.btn.btn-fab,
+.input-group-btn .btn.btn-fab,
+.btn-group-raised .btn,
+.btn-group-raised .input-group-btn .btn,
+.btn.btn-raised.btn-info,
+.input-group-btn .btn.btn-raised.btn-info,
+.btn.btn-fab.btn-info,
+.input-group-btn .btn.btn-fab.btn-info,
+.btn-group-raised .btn.btn-info,
+.btn-group-raised .input-group-btn .btn.btn-info,
+.bg2 {
+    color: #ffffff;
+    background-color: #E91E63;
+}
+
+.btn.btn-raised:not(.btn-link):hover,
+.input-group-btn .btn.btn-raised:not(.btn-link):hover,
+.btn-group-raised .btn:not(.btn-link):hover,
+.btn-group-raised .input-group-btn .btn:not(.btn-link):hover,
+.btn.btn-raised:not(.btn-link):focus,
+.input-group-btn .btn.btn-raised:not(.btn-link):focus,
+.btn-group-raised .btn:not(.btn-link):focus,
+.btn-group-raised .input-group-btn .btn:not(.btn-link):focus,
+.btn.btn-raised:not(.btn-link).active,
+.input-group-btn .btn.btn-raised:not(.btn-link).active,
+.btn-group-raised .btn:not(.btn-link).active,
+.btn-group-raised .input-group-btn .btn:not(.btn-link).active,
+.btn.btn-raised:not(.btn-link):active,
+.input-group-btn .btn.btn-raised:not(.btn-link):active,
+.btn-group-raised .btn:not(.btn-link):active,
+.btn-group-raised .input-group-btn .btn:not(.btn-link):active,
+.btn.btn-raised:not(.btn-link):hover.btn-info,
+.input-group-btn .btn.btn-raised:not(.btn-link):hover.btn-info,
+.btn-group-raised .btn:not(.btn-link):hover.btn-info,
+.btn-group-raised .input-group-btn .btn:not(.btn-link):hover.btn-info,
+.btn.btn-raised:not(.btn-link):focus.btn-info,
+.input-group-btn .btn.btn-raised:not(.btn-link):focus.btn-info,
+.btn-group-raised .btn:not(.btn-link):focus.btn-info,
+.btn-group-raised .input-group-btn .btn:not(.btn-link):focus.btn-info,
+.btn.btn-raised:not(.btn-link).active.btn-info,
+.input-group-btn .btn.btn-raised:not(.btn-link).active.btn-info,
+.btn-group-raised .btn:not(.btn-link).active.btn-info,
+.btn-group-raised .input-group-btn .btn:not(.btn-link).active.btn-info,
+.btn.btn-raised:not(.btn-link):active.btn-info,
+.input-group-btn .btn.btn-raised:not(.btn-link):active.btn-info,
+.btn-group-raised .btn:not(.btn-link):active.btn-info,
+.btn-group-raised .input-group-btn .btn:not(.btn-link):active.btn-info {
+    background-color: #FF4081;
+}
+
+body .topic-list .well.btn-group-sm .featured-grade:hover,
+body .topic-list .well.btn-group-sm .featured-grade:focus {
+    background-color: #FF4081 !important;
+}
+
+/* OTHERS COLOR */
+
+.forum-list .closed a {
+    color: #ffffff;
+    background-color: #D32F2F !important;
+    border-color: #D32F2F !important;
+}
+
+.forum-list .waiting_answer a {
+    color: #ffffff;
+    background-color: #4CAF50 !important;
+    border-color: #4CAF50 !important;
+}
+
+.forum-list .verified a {
+    color: #ffffff;
+    background-color: #4CAF50 !important;
+    border-color: #4CAF50 !important;
+}
+
+.forum-list .site_staff a:hover,
+.forum-list .site_staff a {
+    color: #ffffff;
+    background-color: #E64A19 !important;
+    border-color: #E64A19 !important;
+}
