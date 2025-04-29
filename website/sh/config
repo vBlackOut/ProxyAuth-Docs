@@ -1,5 +1,0 @@
-#!/bin/bash
-
-mkdir -p config
-curl -Lo config/config.json https://raw.githubusercontent.com/vBlackOut/ProxyAuth/main/config/config.json
-curl -Lo config/routes.yml https://raw.githubusercontent.com/vBlackOut/ProxyAuth/main/config/routes.yml
