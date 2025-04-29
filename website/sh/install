@@ -52,4 +52,4 @@ sudo cargo install --root /usr/local -j $(($(nproc) - 1)) proxyauth --force
 echo "[*] Running 'proxyauth prepare'..."
 sudo proxyauth prepare
 
-echo "[✔] proxyauth setup complete."
+echo "[*] proxyauth setup complete."

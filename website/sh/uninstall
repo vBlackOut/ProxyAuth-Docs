@@ -1,0 +1,51 @@
+#!/bin/sh
+
+set -e
+
+echo "[*] Starting proxyauth uninstallation..."
+
+# Remove binary
+if [ -f /usr/local/bin/proxyauth ]; then
+    echo "[*] Removing binary at /usr/local/bin/proxyauth..."
+    sudo rm -f /usr/local/bin/proxyauth
+else
+    echo "[*] Binary not found at /usr/local/bin/proxyauth."
+fi
+
+# Remove configuration directory
+if [ -d /etc/proxyauth ]; then
+    echo "[*] Removing configuration directory /etc/proxyauth..."
+    sudo rm -rf /etc/proxyauth
+else
+    echo "[*] Configuration directory not found."
+fi
+
+# Remove user
+if id proxyauth >/dev/null 2>&1; then
+    echo "[*] Removing user 'proxyauth'..."
+    if command -v deluser >/dev/null 2>&1; then
+        # Alpine, Debian
+        sudo deluser proxyauth || true
+    elif command -v userdel >/dev/null 2>&1; then
+        # RHEL, Arch, others
+        sudo userdel -r proxyauth || sudo userdel proxyauth || true
+    fi
+else
+    echo "[*] User 'proxyauth' does not exist."
+fi
+
+# Remove group
+if getent group proxyauth >/dev/null 2>&1; then
+    echo "[*] Removing group 'proxyauth'..."
+    if command -v delgroup >/dev/null 2>&1; then
+        # Alpine, Debian
+        sudo delgroup proxyauth || true
+    elif command -v groupdel >/dev/null 2>&1; then
+        # RHEL, Arch
+        sudo groupdel proxyauth || true
+    fi
+else
+    echo "[*] Group 'proxyauth' does not exist."
+fi
+
+echo "[*] proxyauth uninstallation complete."
