@@ -4,6 +4,18 @@ set -e
 
 echo "[*] Starting proxyauth uninstallation..."
 
+# Stop and disable systemd service if exists
+if [ -f /etc/systemd/system/proxyauth.service ]; then
+    echo "[*] Stopping and disabling systemd service proxyauth..."
+    sudo systemctl stop proxyauth || true
+    sudo systemctl disable proxyauth || true
+    sudo rm -f /etc/systemd/system/proxyauth.service
+    sudo systemctl daemon-reload
+    sudo systemctl reset-failed
+else
+    echo "[*] Systemd service proxyauth.service not found."
+fi
+
 # Remove binary
 if [ -f /usr/local/bin/proxyauth ]; then
     echo "[*] Removing binary at /usr/local/bin/proxyauth..."
