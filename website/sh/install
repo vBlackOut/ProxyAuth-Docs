@@ -23,19 +23,28 @@ echo "[*] Installing dependencies..."
 
 case "$DISTRO" in
     alpine)
-        sudo apk add --no-cache openssl openssl-libs-static openssl-dev musl-dev build-base pkgconf alpine-sdk sudo
+        sudo apk add --no-cache openssl openssl-libs-static openssl-dev musl-dev build-base pkgconf alpine-sdk sudo curl
         ;;
     debian)
         sudo apt update
-        sudo apt install -y openssl libssl-dev musl musl-dev build-essential pkgconf sudo
+        sudo apt install -y openssl libssl-dev musl musl-dev build-essential pkgconf sudo curl
         ;;
     arch)
-        sudo pacman -Sy --noconfirm openssl musl musl-dev base-devel pkgconf sudo
+        sudo pacman -Sy --noconfirm openssl musl musl-dev base-devel pkgconf sudo curl
         ;;
     fedora)
-        sudo dnf install -y openssl openssl-devel musl musl-devel gcc make pkgconf sudo
+        sudo dnf install -y openssl openssl-devel musl musl-devel gcc make pkgconf sudo curl
         ;;
 esac
+
+# Install Rust if cargo is not found
+if ! command -v cargo &> /dev/null; then
+    echo "[*] cargo not found, installing Rust via rustup..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    source "$HOME/.cargo/env"
+else
+    echo "[*] cargo is already installed."
+fi
 
 echo "[*] Installing proxyauth using cargo..."
 sudo cargo install --root /usr/local -j $(($(nproc) - 1)) proxyauth --force
