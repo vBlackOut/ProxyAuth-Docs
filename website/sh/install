@@ -27,17 +27,17 @@ case "$DISTRO" in
         ;;
     debian)
         sudo apt update
-        sudo apt install -y openssl libssl-dev build-essential pkgconf sudo curl
+        sudo apt install -y openssl libssl-dev musl musl-dev build-essential pkgconf sudo curl
         ;;
     arch)
         sudo pacman -Sy --noconfirm openssl base-devel pkgconf sudo curl
         ;;
     fedora)
-        sudo dnf install -y openssl openssl-devel gcc make pkgconf sudo curl
+        sudo dnf install -y openssl openssl-devel musl musl-devel gcc make pkgconf sudo curl
         ;;
 esac
 
-# Install Rust if cargo is not found
+# Install Rust if not found
 if ! command -v cargo &> /dev/null; then
     echo "[*] cargo not found, installing Rust via rustup..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -47,9 +47,51 @@ else
 fi
 
 echo "[*] Installing proxyauth using cargo..."
-sudo cargo install --root /usr/local -j $(($(nproc) - 1)) proxyauth --force
+sudo cargo install --root /usr/local -j $(($(nproc) - 1)) proxyauth@0.5.6 --force
+
+# Ensure /usr/local/bin/proxyauth is executable
+sudo chmod +x /usr/local/bin/proxyauth
 
 echo "[*] Running 'proxyauth prepare'..."
-sudo proxyauth prepare
+sudo /usr/local/bin/proxyauth prepare
+
+# Check for systemd
+if pidof systemd > /dev/null; then
+    echo "[*] systemd detected. Setting up proxyauth.service..."
+
+    sudo bash -c 'cat > /etc/systemd/system/proxyauth.service' << 'EOF'
+[Unit]
+Description=ProxyAuth Service
+After=network.target
+
+[Service]
+Type=simple
+User=proxyauth
+Group=proxyauth
+ExecStart=/usr/local/bin/proxyauth
+Restart=on-failure
+RestartSec=5
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    echo "[*] Creating proxyauth user if not exists..."
+    if ! id "proxyauth" &>/dev/null; then
+        sudo useradd -r -s /bin/false proxyauth
+    fi
+
+    sudo chown proxyauth:proxyauth /usr/local/bin/proxyauth
+
+    echo "[*] Reloading systemd daemon and enabling service..."
+    sudo systemctl daemon-reload
+    sudo systemctl enable proxyauth
+    sudo systemctl restart proxyauth
+
+    echo "[*] proxyauth.service installed and running!"
+else
+    echo "[!] Warning: systemd not detected. Manual service setup required."
+fi
 
 echo "[*] proxyauth setup complete."
