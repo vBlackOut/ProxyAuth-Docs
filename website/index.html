@@ -309,7 +309,7 @@
                             <p>Configuration Path: ProxyAuth stores its configuration in <b>/etc/proxyauth/config/</b> (version >= 0.5.6) <br><b><a href="#section_02">Please install via (curl or docker)</a></b></p>
                         </div>
                         <br>
-                        <h3>File config.json</h3>
+                        <h3><b>File config.json</b></h3>
                         Complete file: <b>/etc/proxyauth/config/config.json</b>
                         <div style="background: #2d2d2d; color: #ccc; font-family: monospace; width: 100%;">
                         <pre id="json-block" style="tab-size: 2; -moz-tab-size: 2; margin: 0; padding: 1em; text-align: left; white-space: pre-wrap; word-break: break-word; width: 100%;">
@@ -376,7 +376,7 @@
                         </details>
                     </div><br><br>
 
-                    <h3>File routes.yml</h3>
+                    <h3><b>File routes.yml</b></h3>
                     Complete file: <b>/etc/proxyauth/config/routes.yml</b>
                     <div style="background: #2d2d2d; color: #ccc; font-family: monospace; width: 100%;">
                         <pre id="json-block" style="tab-size: 2; -moz-tab-size: 2; margin: 0; padding: 1em; text-align: left; white-space: pre-wrap; word-break: break-word; width: 100%;">
@@ -728,7 +728,7 @@
                             autonumber
                             participant C as Client
                             participant P as ProxyAuth
-                            participant A as HTTPS/TLS API/Service
+                            participant A as HTTPS/TLS<br> API/Service
 
                             C->>+P: Send token Header <br> -X POST http://[host:port]/api -H "Content-Type: application/json" <br>-H "Authorization: Bearer UmbC0ZgATdXE..." -d {"data": "test"}
                             P->>+P: Check token send by client
