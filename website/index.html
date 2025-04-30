@@ -679,7 +679,22 @@
                               <p>ProxyAuth allows you to forward your request through another proxy to access your target destination.</p>
                           </div>
                           <br>
-                          Coming up...
+                          <div class="mermaid">
+                            sequenceDiagram
+                                autonumber
+                                participant C as Client
+                                participant P as ProxyAuth
+                                participant P2 as Other Proxy
+                                participant A as API/Service
+
+                                C->>+P: Send token Header <br> -X POST http://[host:port]/api -H "Content-Type: application/json" <br>-H "Authorization: Bearer UmbC0ZgATdXE..." -d {"data": "test"}
+                                P->>+P: Check token send by client
+                                P->>+P2: Forward original request <br> POST http://[host_target]/api_test <br>-H "Content-Type: application/json" <br>-d {"data": "test"}
+                                P2-->>+A: Forward
+                                A->>-P2: Response
+                                P2->>P: Response
+                                P-->>-C: Response
+                          </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->
@@ -703,7 +718,19 @@
                               <p>ProxyAuth enables forwarding of HTTPS requests in order to securely access a remote machine.</p>
                         </div>
                         <br>
-                        Coming up...
+                        <div class="mermaid">
+                        sequenceDiagram
+                            autonumber
+                            participant C as Client
+                            participant P as ProxyAuth
+                            participant A as HTTPS/TLS API/Service
+
+                            C->>+P: Send token Header <br> -X POST http://[host:port]/api -H "Content-Type: application/json" <br>-H "Authorization: Bearer UmbC0ZgATdXE..." -d {"data": "test"}
+                            P->>+P: Check token send by client
+                            P->>+A: Forward original https over https request <br> POST https://[host_target]/api_test <br>-H "Content-Type: application/json" <br>-d {"data": "test"}
+                            A-->>-P: Response
+                            P-->>-C: Response
+                        </div>
                   </div><!-- end col -->
               </div><!-- end row -->
           </div><!-- end container -->
