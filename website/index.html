@@ -350,18 +350,30 @@
                         <details open>
                             <summary>token_expiry_seconds</summary>
                             <div class="option">1-86400 (Max 1 Day)</div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>3600</code>
+                            </div>
                         </details>
                         <details open>
                             <summary>secret</summary>
                             <div class="option">Please generate a secure token (64 characters or more!)</div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>unset</code>
+                            </div>
                         </details>
                         <details open>
                             <summary>host</summary>
                             <div class="option">IP address where the server listens</div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>0.0.0.0</code>
+                            </div>
                         </details>
                         <details open>
                             <summary>port</summary>
                             <div class="option">Valid range: 1–65535</div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>8080</code>
+                            </div>
                         </details>
                         <details open>
                             <summary>worker</summary>
@@ -371,6 +383,9 @@
                             <summary>log</summary>
                             <div class="option">type: <code>local</code> → do not use remote logging</div>
                             <div class="option">type: <code>loki</code> → use Loki logging <code>{"type": "loki", "host": "127.0.0.1:1234"}</code></div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>local</code>
+                            </div>
                         </details>
                         <details open>
                             <summary>ratelimit</summary>
