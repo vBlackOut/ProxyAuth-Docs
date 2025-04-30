@@ -397,12 +397,44 @@
   - prefix: "/api_test_cert"
     target: "https://localhost:8000/api_test_cert"
     username: ["admin", "alice1", "alice15", "alice30"]
-    cert: {"file": "certificat.pk12", "password": "1234"} # /!\ this fonctionnality is experimental untested /!\</code></pre></div>
+    cert: {"file": "certificat.p12", "password": "1234"}</code></pre></div>
 
 
                     <div class="doc">
                         <h2>Options Documentation</h2>
-                        coming up...
+
+                        <details open>
+                            <summary><strong>prefix</strong></summary>
+                            <div class="option">Defines the URL prefix to use when forwarding the original request to the target service.</div>
+                        </details>
+
+                        <details open>
+                            <summary><strong>target</strong></summary>
+                            <div class="option">Specifies the destination URL or service that will receive the forwarded request.</div>
+                        </details>
+
+                        <details open>
+                            <summary><strong>username</strong></summary>
+                            <div class="option">A list of allowed usernames authorized to access this route.</div>
+                        </details>
+
+                        <details open>
+                            <summary><strong>proxy</strong></summary>
+                            <div class="option">Enable or disable proxy forwarding. Use <code>true</code> to enable, <code>false</code> to disable redirection.</div>
+                        </details>
+
+                        <details open>
+                            <summary><strong>proxy_config</strong></summary>
+                            <div class="option">Configuration object for the proxy destination.</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>host</code>: IP:Port or hostname of the proxy target.</div>
+                        </details>
+
+                        <details open>
+                            <summary><strong>cert</strong> <small style="color:red"><i>* Experimental</i></small></summary>
+                            <div class="option">SSL/TLS certificate configuration:</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>file</code>: Path to the certificate file (e.g., <code>certificate.p12</code>).</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>password</code>: Password used to unlock the certificate.</div>
+                        </details>
                     </div>
 
 
