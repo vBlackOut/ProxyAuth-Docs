@@ -1140,7 +1140,7 @@ async function loadDependencies() {
       results.forEach(({ name, version }) => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.href = `https://crates.io/crates/${name}`;
+        a.href = `https://crates.io/crates/${name}/${version}`;
         a.textContent = name;
         a.target = '_blank';
         li.appendChild(a);
