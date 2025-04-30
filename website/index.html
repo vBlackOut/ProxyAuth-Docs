@@ -425,15 +425,28 @@
 
                         <details open>
                             <summary><strong>proxy</strong></summary>
-                            <div class="option">Enable or disable proxy forwarding. Use <code>true</code> to enable, <code>false</code> to disable redirection.</div>
+                            <div class="option">Enable or disable proxy forwarding. <br>
+                                Use <code>true</code> to need token for access this resource, <code>false</code> to no token need for access this route by <br>
+                            </div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>true</code>.
+                            </div>
                         </details>
-
+                        <details open>
+                            <summary><strong>secure</strong></summary>
+                            <div class="option">
+                                Determines whether the route requires authentication.<br>
+                                Set the <code>secure</code> key to <code>true</code> to require a token, or <code>false</code> to disable authentication.
+                            </div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>true</code>
+                            </div>
+                        </details>
                         <details open>
                             <summary><strong>proxy_config</strong></summary>
                             <div class="option">Configuration object for the proxy destination.</div>
                             <div class="option" style="margin-left: 1rem;">Key <code>host</code> [IP:PORT] or hostname of the proxy target.</div>
                         </details>
-
                         <details open>
                             <summary><strong>cert</strong> <span class="label label-danger badge-pill"><i>* Experimental</i></span></summary>
                             <div class="option">SSL/TLS certificate configuration:</div>
