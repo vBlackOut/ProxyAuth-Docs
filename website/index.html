@@ -339,7 +339,14 @@
 }</code></pre></div>
 
                    <div class="doc">
-                        <h2>Options Documentation</h2>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h2>Options Documentation</h2>
+                            </div>
+                            <div class="col-lg-3">
+                                <span class="label label-danger badge-pill" style="position: relative;top: 20px;font-size: 15px;left: -45px;">All is Required.</span>
+                            </div>
+                        </div>
                         <details open>
                             <summary>token_expiry_seconds</summary>
                             <div class="option">1-86400 (Max 1 Day)</div>
@@ -409,27 +416,22 @@
                         <h2>Options Documentation</h2>
 
                         <details open>
-                            <summary><strong>prefix</strong></summary>
+                            <summary><strong>prefix</strong> <span class="label label-danger badge-pill">Required</span></summary>
                             <div class="option">Defines the URL prefix to use when forwarding the original request to the target service.</div>
                         </details>
 
                         <details open>
-                            <summary><strong>target</strong></summary>
+                            <summary><strong>target</strong> <span class="label label-danger badge-pill">Required</span></summary>
                             <div class="option">Specifies the destination URL or service that will receive the forwarded request.</div>
+                            <div class="option" style="margin-left: 1rem;color:red;">
+                            </div>
                         </details>
 
                         <details open>
                             <summary><strong>username</strong></summary>
                             <div class="option">A list of allowed usernames authorized to access this route.</div>
-                        </details>
-
-                        <details open>
-                            <summary><strong>proxy</strong></summary>
-                            <div class="option">Enable or disable proxy forwarding. <br>
-                                Use <code>true</code> to need token for access this resource, <code>false</code> to no token need for access this route by <br>
-                            </div>
                             <div class="option" style="margin-left: 1rem;">
-                                <strong>Default:</strong> <code>true</code>.
+                                <strong>Default:</strong> <code>unset</code>.
                             </div>
                         </details>
                         <details open>
@@ -443,15 +445,30 @@
                             </div>
                         </details>
                         <details open>
+                            <summary><strong>proxy</strong></summary>
+                            <div class="option">Enable or disable proxy forwarding. <br>
+                                Use <code>true</code> to need token for access this resource, <code>false</code> to no token need for access this route by <br>
+                            </div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>false</code>.
+                            </div>
+                        </details>
+                        <details open>
                             <summary><strong>proxy_config</strong></summary>
                             <div class="option">Configuration object for the proxy destination.</div>
                             <div class="option" style="margin-left: 1rem;">Key <code>host</code> [IP:PORT] or hostname of the proxy target.</div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>unset</code>.
+                            </div>
                         </details>
                         <details open>
                             <summary><strong>cert</strong> <span class="label label-danger badge-pill"><i>* Experimental</i></span></summary>
                             <div class="option">SSL/TLS certificate configuration:</div>
                             <div class="option" style="margin-left: 1rem;">Key <code>file</code> Path to the certificate file (e.g., <code>certificate.p12</code>).</div>
                             <div class="option" style="margin-left: 1rem;">Key <code>password</code> Password used to unlock the certificate.</div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>unset</code>.
+                            </div>
                         </details>
                     </div>
 
