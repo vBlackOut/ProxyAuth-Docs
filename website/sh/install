@@ -27,13 +27,13 @@ case "$DISTRO" in
         ;;
     debian)
         sudo apt update
-        sudo apt install -y openssl libssl-dev build-essential pkgconf sudo curl
+        sudo apt install -y openssl libssl-dev musl musl-dev build-essential pkgconf sudo curl
         ;;
     arch)
         sudo pacman -Sy --noconfirm openssl base-devel pkgconf sudo curl
         ;;
     fedora)
-        sudo dnf install -y openssl openssl-devel gcc make pkgconf sudo curl
+        sudo dnf install -y openssl openssl-devel musl musl-devel gcc make pkgconf sudo curl
         ;;
 esac
 
@@ -76,13 +76,6 @@ Environment=RUST_LOG=info
 [Install]
 WantedBy=multi-user.target
 EOF
-
-    echo "[*] Creating proxyauth user if not exists..."
-    if ! id "proxyauth" &>/dev/null; then
-        sudo useradd -r -s /bin/false proxyauth
-    fi
-
-    sudo chown proxyauth:proxyauth /usr/local/bin/proxyauth
 
     echo "[*] Reloading systemd daemon and enabling service..."
     sudo systemctl daemon-reload
