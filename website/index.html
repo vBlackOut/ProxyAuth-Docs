@@ -42,7 +42,37 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+  <style>
+    details {
+      background: #485E88;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+    }
 
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .option {
+      margin-left: 1rem;
+      margin-top: 5px;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .viewer, .doc {
+      flex: 1;
+      min-width: 300px;
+    }
+  </style>
 <style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style>
 <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
@@ -271,10 +301,111 @@
 
                         <div class="alert alert-dismissible alert-danger">
                             <h4>Notice</h4>
-                            <p>Currently, ProxyAuth does not automatically generate a default configuration at launch. <br><b><a href="#section_02">Please install via (curl or docker)</a></b></p>
+                            <p>Configuration Path: ProxyAuth stores its configuration in <b>/etc/proxyauth/config/</b> (version >= 0.5.6) <br><b><a href="#section_02">Please install via (curl or docker)</a></b></p>
                         </div>
                         <br>
-                        Coming up...
+                        <h3>File config.json</h3>
+                        Complete file: <b>/etc/proxyauth/config/config.json</b>
+                        <div style="background: #2d2d2d; color: #ccc; font-family: monospace; width: 100%;">
+                        <pre id="json-block" style="tab-size: 2; -moz-tab-size: 2; margin: 0; padding: 1em; text-align: left; white-space: pre-wrap; word-break: break-word; width: 100%;">
+<code>{
+  "token_expiry_seconds": 3600,
+  "secret": "supersecretvalue",
+  "host": "0.0.0.0",
+  "port": 8080,
+  "worker": 4,
+  "log": {"type": "local"},
+  "ratelimit": {
+    "burst": 100,
+    "auth": 5,
+    "block_delay": 500,
+    "requests_per_second": 10
+  },
+  "users": [
+    {
+      "username": "admin",
+      "password": "$argon2id$v=19$m=19456,t=2..."
+    },
+    {
+      "username": "alice",
+      "password": "$argon2id$v=19$m=19456,t=2..."
+    }
+  ]
+}</code></pre></div>
+
+                   <div class="doc">
+                        <h2>Options Documentation</h2>
+                        <details open>
+                            <summary>token_expiry_seconds</summary>
+                            <div class="option">1-86400 (Max 1 Day)</div>
+                        </details>
+                        <details open>
+                            <summary>secret</summary>
+                            <div class="option">Please generate a secure token (64 characters or more!)</div>
+                        </details>
+                        <details open>
+                            <summary>host</summary>
+                            <div class="option">IP address where the server listens</div>
+                        </details>
+                        <details open>
+                            <summary>port</summary>
+                            <div class="option">Valid range: 1–65534</div>
+                        </details>
+                        <details open>
+                            <summary>worker</summary>
+                            <div class="option">Number of CPUs available</div>
+                        </details>
+                        <details open>
+                            <summary>log</summary>
+                            <div class="option">type: <code>local</code> → do not use remote logging</div>
+                            <div class="option">type: <code>loki</code> → use Loki logging <code>{"type": "loki", "host": "127.0.0.1:1234"}</code></div>
+                        </details>
+                        <details open>
+                            <summary>ratelimit</summary>
+                        </details>
+                        <details open>
+                            <summary>users</summary>
+                            <div class="option">Array of user objects for authentication.</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>username</code>: username to use with the <code>/auth</code> route to obtain a token</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>password</code>: password to use with the <code>/auth</code> route to obtain a token</div>
+                        </details>
+                    </div><br><br>
+
+                    <h3>File routes.yml</h3>
+                    Complete file: <b>/etc/proxyauth/config/routes.yml</b>
+                    <div style="background: #2d2d2d; color: #ccc; font-family: monospace; width: 100%;">
+                        <pre id="json-block" style="tab-size: 2; -moz-tab-size: 2; margin: 0; padding: 1em; text-align: left; white-space: pre-wrap; word-break: break-word; width: 100%;">
+<code>routes:
+  - prefix: "/redoc"
+    target: "http://127.0.0.1:8000/redoc"
+    secure: false
+
+  - prefix: "/api_test/openapi.json"
+    target: "http://localhost:8000/api_test/openapi.json"
+    secure: false
+
+  - prefix: "/api_test_default"
+    target: "http://localhost:8000/api_test_default"
+    username: ["admin", "alice1", "alice15", "alice30"]
+
+  - prefix: "/api_test_proxy"
+    target: "http://localhost:8000/api_test_proxy"
+    username: ["admin", "alice1", "alice15", "alice30"]
+    proxy: true
+    proxy_config: "http://127.0.0.1:8888"
+
+  - prefix: "/api_test_cert"
+    target: "https://localhost:8000/api_test_cert"
+    username: ["admin", "alice1", "alice15", "alice30"]
+    cert: {"file": "certificat.pk12", "password": "1234"} # /!\ this fonctionnality is experimental untested /!\</code></pre></div>
+
+
+                    <div class="doc">
+                        <h2>Options Documentation</h2>
+                        coming up...
+                    </div>
+
+
                   </div><!-- end col -->
               </div><!-- end row -->
           </div><!-- end container -->
@@ -809,6 +940,4 @@
         }
     })(jQuery);
     </script>
-
-
 </body></html>
