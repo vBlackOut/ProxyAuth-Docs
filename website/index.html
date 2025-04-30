@@ -357,9 +357,11 @@
                         <details open>
                             <summary>token_expiry_seconds</summary>
                             <div class="option">1-86400 (Max 1 Day)</div>
+                            <div class="option"><small><b>Note: Every day at 12:00 AM, tokens are invalidated and recalculated.<br> This ensures secure access throughout the day.</b></small></div>
                             <div class="option" style="margin-left: 1rem;">
                                 <strong>Default:</strong> <code>3600</code>
                             </div>
+
                         </details>
                         <details open>
                             <summary>secret</summary>
