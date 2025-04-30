@@ -82,6 +82,7 @@
     }
   </style>
 <style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style>
+
 <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     mermaid.initialize({
@@ -149,6 +150,9 @@
                 </li>
                 <li>
                     <a href="#section_09" class="btn btn-raised btn-primary"> Changelog</a>
+                </li>
+                <li>
+                    <a href="#section_10" class="btn btn-raised btn-primary"> Dependancies Libs</a>
                 </li>
                 <li>
                     <a href="https://github.com/vBlackOut/ProxyAuth-Docs" class="btn btn-raised btn-primary"> Docs Contribution ❤️</a>
@@ -955,6 +959,28 @@
             </div><!-- end container -->
         </section><!-- end section -->
 
+
+        <section id="section_10" class="section wb">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="section-title">
+                          <h3>Dependancies Libs</h3>
+                          <hr>
+                      </div><!-- end title -->
+                  </div>
+              </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-md-12">
+                        <div id="dependencies">Chargement...</div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section><!-- end section -->
+
+
+
         <!-- <div class="stickyfooter">
             <div class="container-fluid">
                 <div id="copyright" class="row">
@@ -1055,4 +1081,81 @@
         }
     })(jQuery);
     </script>
+
+<script>
+const url = 'https://raw.githubusercontent.com/vBlackOut/ProxyAuth/main/Cargo.toml';
+
+async function loadDependencies() {
+  try {
+    console.log('Début de la récupération du fichier...');
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error(`Erreur HTTP : ${res.status}`);
+    }
+    const text = await res.text();
+
+    const cleanText = text.replace(/\r\n/g, '\n');
+
+    const match = cleanText.match(/\[dependencies\]\s*\n([\s\S]*?)(?=\n\[|\n*$)/);
+    if (!match) {
+      document.getElementById('dependencies').textContent = 'No section [dependencies] found.';
+      return;
+    }
+
+    const lines = match[1].trim().split('\n');
+    const results = [];
+
+    function normalizeVersion(version) {
+      const parts = version.split('.');
+      while (parts.length < 3) {
+        parts.push('0');
+      }
+      return parts.slice(0, 3).join('.');
+    }
+
+    for (const line of lines) {
+      const clean = line.trim();
+      if (!clean || clean.startsWith('#')) continue;
+
+      const simple = clean.match(/^([\w\-_]+)\s*=\s*"([^"]+)"$/);
+      if (simple) {
+        const normalizedVersion = normalizeVersion(simple[2]);
+        results.push({ name: simple[1], version: normalizedVersion });
+        continue;
+      }
+
+      const complex = clean.match(/^([\w\-_]+)\s*=\s*\{\s*version\s*=\s*"([^"]+)"/);
+      if (complex) {
+        const normalizedVersion = normalizeVersion(complex[2]);
+        results.push({ name: complex[1], version: normalizedVersion });
+      }
+    }
+
+    const dependenciesElement = document.getElementById('dependencies');
+    dependenciesElement.innerHTML = '';
+    const ul = document.createElement('ul');
+    if (results.length === 0) {
+      dependenciesElement.textContent = 'Invalid dependancies.';
+    } else {
+      results.forEach(({ name, version }) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `https://crates.io/crates/${name}`;
+        a.textContent = name;
+        a.target = '_blank';
+        li.appendChild(a);
+        li.appendChild(document.createTextNode(` = ${version}`));
+        ul.appendChild(li);
+      });
+      dependenciesElement.appendChild(ul);
+    }
+  } catch (err) {
+    document.getElementById('dependencies').textContent = `Error : ${err.message}`;
+  }
+}
+
+loadDependencies();
+</script>
+
+
 </body></html>
