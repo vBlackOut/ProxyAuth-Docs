@@ -43,8 +43,13 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   <style>
+
+  .label.badge-pill {
+    border-radius:1em;
+    margin:0 0.25em;
+  }
     details {
-      background: #485E88;
+      background: #6A85B9;
       margin-bottom: 10px;
       border-radius: 6px;
       padding: 0.5rem 1rem;
@@ -366,8 +371,8 @@
                         <details open>
                             <summary>users</summary>
                             <div class="option">Array of user objects for authentication.</div>
-                            <div class="option" style="margin-left: 1rem;">Key <code>username</code>: username to use with the <code>/auth</code> route to obtain a token</div>
-                            <div class="option" style="margin-left: 1rem;">Key <code>password</code>: password to use with the <code>/auth</code> route to obtain a token</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>username</code> username to use with the <code>/auth</code> route to obtain a token</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>password</code> password to use with the <code>/auth</code> route to obtain a token</div>
                         </details>
                     </div><br><br>
 
@@ -426,14 +431,14 @@
                         <details open>
                             <summary><strong>proxy_config</strong></summary>
                             <div class="option">Configuration object for the proxy destination.</div>
-                            <div class="option" style="margin-left: 1rem;">Key <code>host</code>: IP:Port or hostname of the proxy target.</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>host</code> [IP:PORT] or hostname of the proxy target.</div>
                         </details>
 
                         <details open>
-                            <summary><strong>cert</strong> <small style="color:red"><i>* Experimental</i></small></summary>
+                            <summary><strong>cert</strong> <span class="label label-danger badge-pill"><i>* Experimental</i></span></summary>
                             <div class="option">SSL/TLS certificate configuration:</div>
-                            <div class="option" style="margin-left: 1rem;">Key <code>file</code>: Path to the certificate file (e.g., <code>certificate.p12</code>).</div>
-                            <div class="option" style="margin-left: 1rem;">Key <code>password</code>: Password used to unlock the certificate.</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>file</code> Path to the certificate file (e.g., <code>certificate.p12</code>).</div>
+                            <div class="option" style="margin-left: 1rem;">Key <code>password</code> Password used to unlock the certificate.</div>
                         </details>
                     </div>
 
