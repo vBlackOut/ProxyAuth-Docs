@@ -1083,78 +1083,47 @@
     </script>
 
 <script>
-const url = 'https://raw.githubusercontent.com/vBlackOut/ProxyAuth/main/Cargo.toml';
-
-async function loadDependencies() {
-  try {
-    console.log('Début de la récupération du fichier...');
-    const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error(`Erreur HTTP : ${res.status}`);
-    }
-    const text = await res.text();
-
-    const cleanText = text.replace(/\r\n/g, '\n');
-
-    const match = cleanText.match(/\[dependencies\]\s*\n([\s\S]*?)(?=\n\[|\n*$)/);
-    if (!match) {
-      document.getElementById('dependencies').textContent = 'No section [dependencies] found.';
-      return;
+    async function getCrateDependencies(crateName, version) {
+      const url = `https://crates.io/api/v1/crates/${crateName}/${version}/dependencies`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
+      const data = await res.json();
+      return data.dependencies.map(dep => ({
+        name: dep.crate_id,
+        version: dep.req,
+        kind: dep.kind
+      }));
     }
 
-    const lines = match[1].trim().split('\n');
-    const results = [];
+    async function loadDependencies() {
+      const container = document.getElementById('dependencies');
+      try {
+        const deps = await getCrateDependencies('proxyauth', '0.5.6');
+        const ul = document.createElement('ul');
 
-    function normalizeVersion(version) {
-      const parts = version.split('.');
-      while (parts.length < 3) {
-        parts.push('0');
-      }
-      return parts.slice(0, 3).join('.');
-    }
+        deps.forEach(dep => {
+          if (dep.kind !== 'normal') return; // on filtre les build/dev deps si besoin
 
-    for (const line of lines) {
-      const clean = line.trim();
-      if (!clean || clean.startsWith('#')) continue;
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = `https://crates.io/crates/${dep.name}/range/%5E${dep.version.replace("^", "")}`;
+          a.target = '_blank';
+          a.textContent = dep.name;
 
-      const simple = clean.match(/^([\w\-_]+)\s*=\s*"([^"]+)"$/);
-      if (simple) {
-        const normalizedVersion = normalizeVersion(simple[2]);
-        results.push({ name: simple[1], version: normalizedVersion });
-        continue;
-      }
+          li.appendChild(a);
+          li.appendChild(document.createTextNode(` = "${dep.version}"`));
+          ul.appendChild(li);
+        });
 
-      const complex = clean.match(/^([\w\-_]+)\s*=\s*\{\s*version\s*=\s*"([^"]+)"/);
-      if (complex) {
-        const normalizedVersion = normalizeVersion(complex[2]);
-        results.push({ name: complex[1], version: normalizedVersion });
+        container.innerHTML = '';
+        container.appendChild(ul);
+      } catch (e) {
+        console.error(e);
+        container.textContent = `Erreur de chargement : ${e.message}`;
       }
     }
 
-    const dependenciesElement = document.getElementById('dependencies');
-    dependenciesElement.innerHTML = '';
-    const ul = document.createElement('ul');
-    if (results.length === 0) {
-      dependenciesElement.textContent = 'Invalid dependancies.';
-    } else {
-      results.forEach(({ name, version }) => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.href = `https://crates.io/crates/${name}/${version}`;
-        a.textContent = name;
-        a.target = '_blank';
-        li.appendChild(a);
-        li.appendChild(document.createTextNode(` = ${version}`));
-        ul.appendChild(li);
-      });
-      dependenciesElement.appendChild(ul);
-    }
-  } catch (err) {
-    document.getElementById('dependencies').textContent = `Error : ${err.message}`;
-  }
-}
-
-loadDependencies();
+    loadDependencies();
 </script>
 
 
