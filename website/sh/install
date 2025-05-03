@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-
+sudo -i
 echo "[*] Detecting Linux distribution..."
 
 # Detect distro
@@ -40,14 +40,14 @@ esac
 # Install Rust if not found
 if ! command -v cargo &> /dev/null; then
     echo "[*] cargo not found, installing Rust via rustup..."
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo sh -s -- -y
     source "$HOME/.cargo/env"
 else
     echo "[*] cargo is already installed."
 fi
 
 echo "[*] Installing proxyauth using cargo..."
-sudo cargo install --root /usr/local -j $(($(nproc) - 1)) proxyauth@0.5.6 --force
+cargo install --root /usr/local -j $(($(nproc) - 1)) proxyauth@0.5.6 --force --no-track
 
 # Ensure /usr/local/bin/proxyauth is executable
 sudo chmod +x /usr/local/bin/proxyauth
