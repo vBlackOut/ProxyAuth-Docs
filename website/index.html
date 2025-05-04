@@ -849,26 +849,26 @@
                         -----------------------------------------------------------------------------------------
                         Version 0.5.8
                         -----------------------------------------------------------------------------------------
-                            [BUG] Launch by default HTTPS/TLS now, it's fixed
+                            [BUGFIX] Default launch now correctly uses HTTPS/TLS
 
                         -----------------------------------------------------------------------------------------
                         Version 0.5.7
                         -----------------------------------------------------------------------------------------
-                            [FIX] Better installation script
-                            [ADD] Better explain ratelimit for wait time in (milliseconds)
+                            [FIX] Improved installation script
+                            [ADD] Clearer explanation of rate limiting (wait time in milliseconds)
 
                         -----------------------------------------------------------------------------------------
                         Version 0.5.6
                         -----------------------------------------------------------------------------------------
-                            [FIX] User for Alpine/Other linux
+                            [FIX] Better compatibility with Alpine and other Linux distributions
 
                         -----------------------------------------------------------------------------------------
                         Version 0.5.5
                         -----------------------------------------------------------------------------------------
-                            [ADD] Add new command prepare
-                            [ADD] launch program as root for program are create/use the user proxyauth for write in /etc/proxyauth
-                            [TODO] documentation coming up for explain this.
-                            [ADD] use first start proxyauth prepare after launch as root : sudo proxyauth prepare
+                            [ADD] Introduced new 'prepare' command
+                            [ADD] Program now launches as root and creates/uses the 'proxyauth' user to write in /etc/proxyauth
+                            [TODO] Documentation is coming to explain this setup
+                            [NOTE] First-time usage: run `sudo proxyauth prepare` before launching the app
 
                         -----------------------------------------------------------------------------------------
                         Version 0.5.4

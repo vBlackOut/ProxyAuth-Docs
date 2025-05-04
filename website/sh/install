@@ -66,6 +66,7 @@ After=network.target
 
 [Service]
 Type=simple
+LimitNOFILE=1048576
 User=proxyauth
 Group=proxyauth
 ExecStart=/usr/local/bin/proxyauth
