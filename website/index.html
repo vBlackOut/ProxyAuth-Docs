@@ -80,6 +80,23 @@
     details div.option code {
         font-size: 12px;
     }
+
+    .stable_version {
+      position: relative;
+      left: 35px;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .stable_version span {
+      font-size: 18px
+      color: black;
+    }
+
+    .tooltip {
+      z-index: 999999;
+    }
   </style>
 <style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style>
 
@@ -111,12 +128,24 @@
     <!-- END LOADER -->
 
     <div id="wrapper">
+
+
         <aside id="sideBar">
+
             <ul class="main-nav">
                 <!-- Your Logo Or Site Name -->
                 <li class="nav-brand">
                     <a href="/"> ProxyAuth <small>Proxy Authenticate Token</small></a>
                 </li>
+
+                <div class="stable_version">
+                  Stable Version <span class="label label-success badge-pill" data-toggle="tooltip" title="This version works but does not include all the latest features.">0.4.2</span>
+                </div>
+
+                <div class="stable_version">
+                  Testing Version <span id="testtooltip" class="label label-warning badge-pill" data-toggle="tooltip" title="Caution: this update introduces significant changes and has not yet undergone full testing.">0.5.8</span>
+                </div>
+
                 <!-- Search -->
                 <li>
                     <a href="#section_01" class="btn btn-raised btn-primary"> Getting Started</a>
@@ -158,6 +187,7 @@
                     <a href="https://github.com/vBlackOut/ProxyAuth-Docs" class="btn btn-raised btn-primary"> Docs Contribution ❤️</a>
                 </li>
             </ul>
+
         </aside>
 
         <section id="section_00" class="section wb">
@@ -175,6 +205,7 @@
                       <li><a href="https://crates.io/crates/proxyauth">Crates.io</a></li>
                       <li><a href="#section_09">Changelog</a></li>
                     </ul>
+
                 </div><!-- end title -->
             </div><!-- end container -->
         </section><!-- end section -->
@@ -1144,7 +1175,24 @@
     }
 
     loadDependencies();
+
+ $('#testtooltip').tooltip();
+
+  $('#testtooltip').on('shown.bs.tooltip', function () {
+    var $tooltip = $(this).data('bs.tooltip').$tip;
+
+    if ($tooltip && $tooltip.length) {
+      // Lire la position calculée
+      var currentLeft = parseInt($tooltip.css('left'), 10);
+
+      // Crée une règle CSS inline avec !important
+      $tooltip[0].style.setProperty('left', (currentLeft - 20) + 'px', 'important');
+    }
+  });
+
 </script>
+
+
 
 
 </body></html>
