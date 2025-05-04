@@ -90,8 +90,9 @@
     }
 
     .stable_version span {
-      font-size: 18px
+      font-size: 10px;
       color: black;
+      text-transform: uppercase;
     }
 
     .tooltip {
@@ -139,11 +140,11 @@
                 </li>
 
                 <div class="stable_version">
-                  Stable Version <span class="label label-success badge-pill" data-toggle="tooltip" title="This version works but does not include all the latest features.">0.4.x</span>
+                  Stable Version <span class="label label-success badge-pill" data-toggle="tooltip" title="This version works but does not include all the latest features.">0.4.X</span>
                 </div>
 
                 <div class="stable_version">
-                  Testing Version <span id="tooltip_left" class="label label-warning badge-pill" data-toggle="tooltip" title="Caution: this update introduces significant changes and has not yet undergone full testing.">0.5.x</span>
+                  Experimental Version <span id="tooltip_left" class="label label-warning badge-pill" data-toggle="tooltip" title="Caution: this update introduces significant changes and has not yet undergone full testing.">0.5.X</span>
                 </div>
 
                 <!-- Search -->
@@ -1166,7 +1167,7 @@
     if ($tooltip && $tooltip.length) {
       var currentLeft = parseInt($tooltip.css('left'), 10);
 
-      $tooltip[0].style.setProperty('left', (currentLeft - 20) + 'px', 'important');
+      $tooltip[0].style.setProperty('left', (currentLeft - 40) + 'px', 'important');
     }
   });
 
