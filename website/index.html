@@ -143,7 +143,7 @@
                 </div>
 
                 <div class="stable_version">
-                  Testing Version <span id="testtooltip" class="label label-warning badge-pill" data-toggle="tooltip" title="Caution: this update introduces significant changes and has not yet undergone full testing.">0.5.8</span>
+                  Testing Version <span id="tooltip_left" class="label label-warning badge-pill" data-toggle="tooltip" title="Caution: this update introduces significant changes and has not yet undergone full testing.">0.5.8</span>
                 </div>
 
                 <!-- Search -->
@@ -1031,25 +1031,6 @@
     </section><!-- end section -->
 
 
-
-        <!-- <div class="stickyfooter">
-            <div class="container-fluid">
-                <div id="copyright" class="row">
-                    <div class="col-md-6 col-sm-12 text-left">
-                        <p>Helper ® is a designed and registered trademark of <a href="https://www.similaricons.com/">Similar Icons</a> INC.</p>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <ul class="list-inline text-right">
-                            <li><a href="#">Terms of Usage</a></li>
-                            <li><a href="#">Copyrights</a></li>
-                            <li><a href="#">License</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
     </div>
     <!-- end wrapper -->
 
@@ -1095,6 +1076,7 @@
 
             // Call Menu Toggler
             appMaster.menuToggler();
+
             // Example Call anotherFunction
             appMaster.anotherFunction();
 
@@ -1137,7 +1119,7 @@
     async function getCrateDependencies(crateName, version) {
       const url = `https://crates.io/api/v1/crates/${crateName}/${version}/dependencies`;
       const res = await fetch(url);
-      if (!res.ok) throw new Error(`Erreur HTTP ${res.status}`);
+      if (!res.ok) throw new Error(`Error HTTP ${res.status}`);
       const data = await res.json();
       return data.dependencies.map(dep => ({
         name: dep.crate_id,
@@ -1153,7 +1135,7 @@
         const ul = document.createElement('ul');
 
         deps.forEach(dep => {
-          if (dep.kind !== 'normal') return; // on filtre les build/dev deps si besoin
+          if (dep.kind !== 'normal') return; // build/dev deps if needed
 
           const li = document.createElement('li');
           const a = document.createElement('a');
@@ -1170,29 +1152,25 @@
         container.appendChild(ul);
       } catch (e) {
         console.error(e);
-        container.textContent = `Erreur de chargement : ${e.message}`;
+        container.textContent = `Error load : ${e.message}`;
       }
     }
 
     loadDependencies();
 
- $('#testtooltip').tooltip();
+ $('#tooltip_left').tooltip();
 
-  $('#testtooltip').on('shown.bs.tooltip', function () {
+  $('#tooltip_left').on('shown.bs.tooltip', function () {
     var $tooltip = $(this).data('bs.tooltip').$tip;
 
     if ($tooltip && $tooltip.length) {
-      // Lire la position calculée
       var currentLeft = parseInt($tooltip.css('left'), 10);
 
-      // Crée une règle CSS inline avec !important
       $tooltip[0].style.setProperty('left', (currentLeft - 20) + 'px', 'important');
     }
   });
 
 </script>
-
-
 
 
 </body></html>
