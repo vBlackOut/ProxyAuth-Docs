@@ -661,7 +661,7 @@ body.doc_wrapper #sideBar {
     left: 0;
     background: #64676c;
     height: 100%;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     -webkit-transition: all .25s ease-in-out;
     -moz-transition: all .25s ease-in-out;
     transition: all .25s ease-in-out;
