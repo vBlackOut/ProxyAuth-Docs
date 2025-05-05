@@ -196,7 +196,7 @@
                 <div class="page-title text-center">
                     <h1>ProxyAuth</h1>
                     <ul class="breadcrumb">
-                        <li class="active">Lastest version 0.5.8</li>
+                        <li class="active">Lastest version 0.5.10</li>
                         <li class="active">License: Apache 2.0</li>
                         <li class="active">Author: Vladimir SOUCHET (vBlackOut)</li>
 
@@ -365,11 +365,15 @@
   "port": 8080,
   "worker": 4,
   "log": {"type": "local"},
-  "ratelimit": {
-    "burst": 100,
-    "auth": 5,
-    "block_delay": 500,
+  "ratelimit_auth": {
     "requests_per_second": 10
+    "burst": 100,
+    "block_delay": 500,
+  },
+  "ratelimit_proxy": {
+    "requests_per_second": 10
+    "burst": 100,
+    "block_delay": 500,
   },
   "users": [
     {
@@ -438,7 +442,10 @@
                             </div>
                         </details>
                         <details open>
-                            <summary>ratelimit</summary>
+                            <summary>ratelimit_auth</summary>
+                        </details>
+                        <details open>
+                            <summary>ratelimit_proxy</summary>
                         </details>
                         <details open>
                             <summary>users</summary>
