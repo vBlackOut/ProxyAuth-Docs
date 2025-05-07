@@ -56,8 +56,6 @@ if getent group proxyauth >/dev/null 2>&1; then
         # RHEL, Arch
         sudo groupdel proxyauth || true
     fi
-else
-    echo "[*] Group 'proxyauth' does not exist."
 fi
 
 echo "[*] proxyauth uninstallation complete."
