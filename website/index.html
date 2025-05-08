@@ -196,7 +196,7 @@
                 <div class="page-title text-center">
                     <h1>ProxyAuth</h1>
                     <ul class="breadcrumb">
-                        <li class="active">Lastest version 0.5.12</li>
+                        <li class="active">Lastest version 0.5.14</li>
                         <li class="active">License: Apache 2.0</li>
                         <li class="active">Author: Vladimir SOUCHET (vBlackOut)</li>
 
@@ -356,7 +356,32 @@
                         </div>
                           Used to display token usage statistics. In previous versions, it was possible to revoke a specific token ID.<br>
                           Example: The user "<b>admin</b>" has used the token ID "<b>AVzjugA=yY!$#...</b>" a total of <b>2 times</b>.<br>
-                          <img src="/static/images/proxy_auth_stats.png">
+                          <img src="/static/images/proxy_auth_stats.png"><br><br>
+
+                          <h4><b>curl give stats</b></h4>
+                          The admin token is in <b>/etc/proxyauth/config/config.json</b> (automatically created at launch).<br>
+                          <div class="lines">
+                              <div class="line alt1">
+                                <code><span class="comment"> // show stats</span></code>
+                              </div>
+                              <div class="line alt1">
+                                <code><span class="number">$</span>curl -H 'X-Auth-Token: [YOUR_TOKEN_ADMIN]' http://127.0.0.1:8080/adm/stats</code>
+                              </div>
+                              <div class="line alt1">
+                                <code><span class="number">response</span><pre>[
+  {
+    "user": "admin",
+    "tokens": [
+      {
+        "token_id": "AVzjugA=yY!$#=X%9k...",
+        "count": 2
+      }
+    ]
+  }
+]</pre></code>
+                              </div>
+                          </div>
+
 
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -912,6 +937,21 @@
 
                         <div style="background: #2d2d2d; color: #ccc; font-family: monospace; overflow-x: auto; margin: auto;">
                           <pre style="margin: 0; line-height: 1.5;">
+
+                        -----------------------------------------------------------------------------------------
+                        Version 0.5.15
+                        -----------------------------------------------------------------------------------------
+                            [FIX] cmd cli stats for routes /adm/stats
+
+                        -----------------------------------------------------------------------------------------
+                        Version 0.5.14
+                        -----------------------------------------------------------------------------------------
+                            [ADD] clear project /adm/stats
+
+                        -----------------------------------------------------------------------------------------
+                        Version 0.5.13
+                        -----------------------------------------------------------------------------------------
+                            [ADD] Route Admin /adm/stats
 
                         -----------------------------------------------------------------------------------------
                         Version 0.5.12
