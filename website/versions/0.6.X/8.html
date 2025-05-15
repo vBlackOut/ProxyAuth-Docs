@@ -1226,6 +1226,57 @@
         </div><!-- end container -->
     </section><!-- end section -->
 
+<<<<<<< HEAD:website/versions/0.6.X/8.html
+=======
+     <section id="section_13" class="section wb">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="section-title">
+                          <h3>Benchmark v0.6.0 <br><small>The performance is not yet fully optimized, but improvements are planned. All tokens are actively monitored.</small></h3>
+                          <hr>
+                      </div><!-- end title -->
+                  </div>
+              </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-md-12">
+                        <b>On Server (LOW CPU) ~ 185 000 requests/s</b> <br>
+                        <b>Configuration ProxyAuth</b>: 8 workers <br>
+                        <b>Network</b>: ~ 85 Mb/s<br>
+                        <b>Nb clients</b>: 500<br>
+                        <b>AVG Latency</b>: ~ 3 ms<br>
+                        <b>CPU</b>: Threadripper PRO 5995WX (64-cores, 128threads),<br>
+                        <b>RAM</b>: 512 Go DDR4 RAM LRDIMM<br>
+                        <b> Protocol</b>: H2 (HTTP/2)
+                        <img src="../../static/images/benchmark_0.6.0_8threads.png">
+
+                        <br><br>
+                        <b>On Server (Middle CPU) ~ 391 000 requests/s</b> <br>
+                        <b>Configuration ProxyAuth</b>: 64 workers (Middle CPU)<br>
+                        <b>Nb clients:</b> 500<br>
+                        <b>Network</b>: ~ 176 Mb/s<br>
+                        <b>AVG Latency</b>: ~ 1 ms<br>
+                        <b>CPU</b>: Threadripper PRO 5995WX (64-cores, 128-threads),<br>
+                        <b>RAM</b>: 512 Go DDR4 RAM LRDIMM<br>
+                        <b> Protocol</b>: H2 (HTTP/2)
+                        <img src="../../static/images/benchmark_0.6.0_fullcpu.png">
+
+                        <br><br>
+                        <b>On laptop (FULL CPU) ~ 30 000 requests/s</b> <br>
+                        <b>Configuration ProxyAuth</b>: 8 workers (FULL CPU)<br>
+                        <b>Nb clients:</b> 500<br>
+                        <b>Network</b>: ~ 15 Mb/s<br>
+                        <b>AVG Latency</b>: ~ 16 ms<br>
+                        <b>CPU</b>: INTEL i7-10510U (4-cores, 8-threads),<br>
+                        <b>RAM</b>: 32 Go DDR4 RAM<br>
+                        <b> Protocol</b>: H2 (HTTP/2)
+                        <img src="../../static/images/benchmark_proxyauth_0.6.0_laptop.png">
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section><!-- end section -->
+>>>>>>> dbe4174 (Update docs):website/versions/0.6.X/index.html
     </div>
     <!-- end wrapper -->
 
