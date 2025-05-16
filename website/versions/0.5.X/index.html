@@ -18,91 +18,30 @@
     <meta name="author" content="vBlackOut">
 
     <!-- Material Design fonts -->
-    <link href="static/css.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/icon.css">
+    <link href="../../static/css.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/icon.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="static/bootstrap.css">
-    <link rel="stylesheet" href="static/bootstrap-material-design.css">
-    <link rel="stylesheet" href="static/ripples.min.css">
-    <link rel="stylesheet" href="static/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/bootstrap.css">
+    <link rel="stylesheet" href="../../static/bootstrap-material-design.css">
+    <link rel="stylesheet" href="../../static/ripples.min.css">
+    <link rel="stylesheet" href="../../static/font-awesome.min.css">
 
     <!-- Site CSS -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="../../static/style.css">
     <!-- Colors CSS -->
-    <link rel="stylesheet" href="static/colors.css">
+    <link rel="stylesheet" href="../../static/colors.css">
 
     <!-- Venobox CSS -->
-    <link rel="stylesheet" href="static/venobox.css">
+    <link rel="stylesheet" href="../../static/venobox.css">
     <!-- Code Snippet CSS -->
-    <link href="static/shCore.css" rel="stylesheet">
-    <link href="static/shThemeDefault.css" rel="stylesheet">
+    <link href="../../static/shCore.css" rel="stylesheet">
+    <link href="../../static/shThemeDefault.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  <style>
-
-  .label.badge-pill {
-    border-radius:1em;
-    margin:0 0.25em;
-  }
-    details {
-      background: #6A85B9;
-      margin-bottom: 10px;
-      border-radius: 6px;
-      padding: 0.5rem 1rem;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: bold;
-      color: #fff;
-    }
-
-    .option {
-      margin-left: 1rem;
-      margin-top: 5px;
-      color: #fff;
-    }
-
-    .container {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .viewer, .doc {
-      flex: 1;
-      min-width: 300px;
-    }
-    details div.option code {
-        font-size: 12px;
-    }
-
-    .stable_version {
-      position: relative;
-      left: 25px;
-      color: white;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .stable_version span {
-      font-size: 10px;
-      color: black;
-      text-transform: uppercase;
-    }
-
-    .tooltip {
-      z-index: 999999;
-    }
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
 <style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style>
 
 <script type="module">
@@ -128,7 +67,7 @@
 
     <!-- LOADER -->
     <div id="preloader" style="display: none;">
-        <img class="preloader" src="static/loader.gif" alt="" style="display: none;">
+        <img class="preloader" src="../../static/loader.gif" alt="" style="display: none;">
     </div><!-- end loader -->
     <!-- END LOADER -->
 
@@ -140,16 +79,15 @@
             <ul class="main-nav">
                 <!-- Your Logo Or Site Name -->
                 <li class="nav-brand">
-                    <a href="/"> ProxyAuth <small>Proxy Authenticate Token</small></a>
+                    <a href="/"> ProxyAuth <span id="version-display"></span><small>Proxy Authenticate Token</small></a>
                 </li>
 
-                <div class="stable_version">
-                  Stable Version <span class="label label-success badge-pill" data-toggle="tooltip" title="This version works but does not include all the latest features.">0.5.22</span>
-                </div>
-
-                <div class="stable_version">
-                  Experimental Version <span id="tooltip_left" class="label label-warning badge-pill" data-toggle="tooltip" title="Caution: this update introduces significant changes and has not yet undergone full testing."> >= 0.5.23</span>
-                </div>
+                <select id="version-select">
+                  <option value="">-- Choose a version --</option>
+                  <option value="">latest</option>
+                  <option value="0.6.X">v0.6.X</option>
+                  <option value="0.5.X">v0.5.X</option>
+                </select><br>
 
                 <!-- Search -->
                 <li>
@@ -200,11 +138,11 @@
                 <div class="page-title text-center">
                     <h1>ProxyAuth</h1>
                     <ul class="breadcrumb">
-                        <li class="active">Lastest version 0.5.22</li>
+                        <li class="active">Lastest version 0.5.34</li>
                         <li class="active">License: Apache 2.0</li>
                         <li class="active">Author: Vladimir SOUCHET (vBlackOut)</li>
-
                     </ul>
+
                     <ul class="breadcrumb">
                       <li class="active"> <a href="https://github.com/vBlackOut/ProxyAuth" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg> Github</a></li>
                       <li><a href="https://crates.io/crates/proxyauth">Crates.io</a></li>
@@ -244,8 +182,8 @@
                     </div><!-- end col -->
 
                     <div class="col-md-5">
-                        <img src="static/logo.jpg" alt="" class="img-responsive">
-                        <a href="static/images/SMALL_DIAGRAM.png" target="_blank"><img src="static/images/SMALL_DIAGRAM.png" alt="" class="img-responsive"></a>
+                        <img src="../../static/logo.jpg" alt="" class="img-responsive">
+                        <a href="../../static/images/SMALL_DIAGRAM.png" target="_blank"><img src="../../static/images/SMALL_DIAGRAM.png" alt="" class="img-responsive"></a>
                         <center><small>This is a simplified diagram. It might not be fully accurate, but it represents the general idea.</small></center>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -363,7 +301,7 @@
                         </div>
                           Used to display token usage statistics. In previous versions, it was possible to revoke a specific token ID.<br>
                           Example: The user "<b>admin</b>" has used the token ID "<b>AVzjugA=yY!$#...</b>" a total of <b>2 times</b>.<br>
-                          <img src="/static/images/proxy_auth_stats.png"><br><br>
+                          <img src="../../static/images/proxy_auth_stats.png"><br><br>
 
                           <h4><b>curl give stats</b></h4>
                           The admin token is in <b>/etc/proxyauth/config/config.json</b> (automatically created at launch).<br>
@@ -372,7 +310,7 @@
                                 <code><span class="comment"> // show stats</span></code>
                               </div>
                               <div class="line alt1">
-                                <code><span class="number">$</span>curl -H 'X-Auth-Token: [YOUR_TOKEN_ADMIN]' http://127.0.0.1:8080/adm/stats</code>
+                                <code><span class="number">$</span>curl -H 'X-Auth-Token: [YOUR_TOKEN_ADMIN]' https://127.0.0.1:8080/adm/stats</code>
                               </div>
                               <div class="line alt1">
                                 <code><span class="number">response</span><pre>[
@@ -503,9 +441,35 @@
                         </details>
                         <details open>
                             <summary>ratelimit_auth</summary>
+                            <div class="option">
+                                <strong>request_per_seconds:</strong> <code>0</code> for disable the rate limit, Maximum number of authentication requests allowed per second from a single client.
+                            </div>
+                            <div class="option">
+                                <strong>burst:</strong> Number of extra requests allowed beyond the per-second rate before blocking is enforced.
+                            </div>
+                            <div class="option">
+                                <strong>block_delay:</strong> Time a client must wait (after exceeding limits) before sending new authentication
+                            </div>
+
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>Disabled</code>
+                            </div>
                         </details>
                         <details open>
                             <summary>ratelimit_proxy</summary>
+                            <div class="option">
+                                <strong>request_per_seconds:</strong> <code>0</code> for disable the rate limit, Maximum number of forward proxy requests allowed per second from a single client.
+                            </div>
+                            <div class="option">
+                                <strong>burst:</strong> Number of extra requests allowed beyond the per-second rate before blocking is enforced.
+                            </div>
+                            <div class="option">
+                                <strong>block_delay:</strong> Time a client must wait (after exceeding limits) before sending forward request inside ProxyAuth
+                            </div>
+
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>Disabled</code>
+                            </div>
                         </details>
                         <details open>
                             <summary>users</summary>
@@ -648,7 +612,7 @@
                                         <code><span class="comment">// default login is admin and admin123 change this in config.json</span></code>
                                       </div>
                                       <div class="line alt1">
-                                        <code><span class="number">$</span>curl -X POST http://127.0.0.1:8080/auth -H "Content-Type: application/json" -d '{"username": "admin", "password": "admin123"}'</code>
+                                        <code><span class="number">$</span>curl -X POST https://127.0.0.1:8080/auth -H "Content-Type: application/json" -d '{"username": "admin", "password": "admin123"}'</code>
                                       </div>
                                   </div>
                                 </div>
@@ -742,7 +706,7 @@
                         participant C as Client
                         participant P as ProxyAuth
 
-                        C->>+P: POST http://[host:port]/auth<br>-H "Content-Type: application/json"<br>-d {"username": "user", "password": "pass"}
+                        C->>+P: POST https://[host:port]/auth<br>-H "Content-Type: application/json"<br>-d {"username": "user", "password": "pass"}
                         P->>+P: Check credential
                         P->>+C: return json format <br>{"expires_at":"2025-04-12 16:15:20","token":"4GJeCUwOzILd..."}
                   </div>
@@ -760,7 +724,7 @@
                         <p>ProxyAuth forwards your original request to the target after validating the token.</p>
 
                         <b>METHOD</b> ALL<br>
-                        <b>URL</b> [host:port]/[prefix]<br>
+                        <b>URL</b> https://[host:port]/[prefix]<br>
                         <b>HEADER</b> "Authorization: Bearer &lt;your_token&gt;"<br>
 
                         <ol>
@@ -800,7 +764,7 @@
                       participant P as ProxyAuth
                       participant A as API/Service
 
-                      C->>+P: Send token Header <br> -X POST http://[host:port]/api -H "Content-Type: application/json" <br>-H "Authorization: Bearer UmbC0ZgATdXE..." -d {"data": "test"}
+                      C->>+P: Send token Header <br> -X POST https://[host:port]/api -H "Content-Type: application/json" <br>-H "Authorization: Bearer UmbC0ZgATdXE..." -d {"data": "test"}
                       P->>+P: Check token send by client
                       P->>+A: Forward original request <br> POST http://[host_target]/api_test <br>-H "Content-Type: application/json" <br>-d {"data": "test"}
                       A-->>-P: Response
@@ -854,7 +818,7 @@
                                 participant P2 as Other Proxy
                                 participant A as API/Service
 
-                                C->>+P: Send token Header <br> -X POST http://[host:port]/api -H "Content-Type: application/json" <br>-H "Authorization: Bearer UmbC0ZgATdXE..." -d {"data": "test"}
+                                C->>+P: Send token Header <br> -X POST https://[host:port]/api -H "Content-Type: application/json" <br>-H "Authorization: Bearer UmbC0ZgATdXE..." -d {"data": "test"}
                                 P->>+P: Check token send by client
                                 P->>+P2: Forward original request <br> POST http://[host_target]/api_test <br>-H "Content-Type: application/json" <br>-d {"data": "test"}
                                 P2-->>+A: Forward
@@ -892,7 +856,7 @@
                             participant P as ProxyAuth
                             participant A as HTTPS/TLS<br> API/Service
 
-                            C->>+P: Send token Header <br> -X POST http://[host:port]/api -H "Content-Type: application/json" <br>-H "Authorization: Bearer UmbC0ZgATdXE..." -d {"data": "test"}
+                            C->>+P: Send token Header <br> -X POST https://[host:port]/api -H "Content-Type: application/json" <br>-H "Authorization: Bearer UmbC0ZgATdXE..." -d {"data": "test"}
                             P->>+P: Check token send by client
                             P->>+A: Forward original https over https request <br> POST https://[host_target]/api_test <br>-H "Content-Type: application/json" <br>-d {"data": "test"}
                             A-->>-P: Response
@@ -944,6 +908,23 @@
 
                         <div style="background: #2d2d2d; color: #ccc; font-family: monospace; overflow-x: auto; margin: auto;">
                           <pre style="margin: 0; line-height: 1.5;">
+
+
+                        -----------------------------------------------------------------------------------------
+                        Version 0.5.34
+                        -----------------------------------------------------------------------------------------
+                            [REBUILD] Rebuild all proxy conception.
+
+                        -----------------------------------------------------------------------------------------
+                        Version 0.5.28
+                        -----------------------------------------------------------------------------------------
+                            [BUGFIX] Load configuration ratelimit possible disable if key si unset or
+                                     request_per_seconds is 0.
+
+                        -----------------------------------------------------------------------------------------
+                        Version 0.5.23-0.5.27
+                        -----------------------------------------------------------------------------------------
+                            [PERF] Improve performance ~ 1 Millions requests per seconds
 
                         -----------------------------------------------------------------------------------------
                         Version 0.5.22
@@ -1159,148 +1140,39 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end section -->
-
-
     </div>
     <!-- end wrapper -->
 
-    <script src="static/jquery.js"></script>
-    <script src="static/bootstrap.js"></script>
-    <script src="static/ripples.min.js"></script>
-    <script src="static/material.min.js"></script>
-    <script src="static/custom.js"></script>
+    <script src="../../static/jquery.js"></script>
+    <script src="../../static/bootstrap.js"></script>
+    <script src="../../static/ripples.min.js"></script>
+    <script src="../../static/material.min.js"></script>
+    <script src="../../static/custom.js"></script>
 
-    <script src="static/venobox.min.js"></script>
-    <script src="static/jquery.fitvids.js"></script>
+    <script src="../../static/venobox.min.js"></script>
+    <script src="../../static/jquery.fitvids.js"></script>
     <!-- Code Snippet JS -->
-    <script type="text/javascript" src="static/shCore.js"></script>
-    <script type="text/javascript" src="static/shBrushBash.js"></script>
-    <script type="text/javascript" src="static/shBrushCpp.js"></script>
-    <script type="text/javascript" src="static/shBrushCSharp.js"></script>
-    <script type="text/javascript" src="static/shBrushCss.js"></script>
-    <script type="text/javascript" src="static/shBrushDelphi.js"></script>
-    <script type="text/javascript" src="static/shBrushDiff.js"></script>
-    <script type="text/javascript" src="static/shBrushGroovy.js"></script>
-    <script type="text/javascript" src="static/shBrushJava.js"></script>
-    <script type="text/javascript" src="static/shBrushJScript.js"></script>
-    <script type="text/javascript" src="static/shBrushPhp.js"></script>
-    <script type="text/javascript" src="static/shBrushPlain.js"></script>
-    <script type="text/javascript" src="static/shBrushPython.js"></script>
-    <script type="text/javascript" src="static/shBrushRuby.js"></script>
-    <script type="text/javascript" src="static/shBrushScala.js"></script>
-    <script type="text/javascript" src="static/shBrushSql.js"></script>
-    <script type="text/javascript" src="static/shBrushVb.js"></script>
-    <script type="text/javascript" src="static/shBrushXml.js"></script>
-    <script type="text/javascript" src="static/shCore.js"></script>
-    <script type="text/javascript" src="static/shBrushJScript.js"></script>
-
-    <script type="text/javascript">
-    (function($) {
-    "use strict";
-        $(document).ready(function() {
-            // dropdown element
-            $('.header-dropdown').click(function() {
-              $(this).next('.content').slideToggle(200);
-              $(this).find('.arrow').toggleClass('rotate');
-            });
-
-            // Call Menu Toggler
-            appMaster.menuToggler();
-
-            // Example Call anotherFunction
-            appMaster.anotherFunction();
-
-            SyntaxHighlighter.config.clipboardSwf = 'assets/code/js/clipboard.swf';
-            SyntaxHighlighter.all();
-
-            // Target your .container, .wrapper, .post, etc.
-            $(".video_wrapper").fitVids();
-
-            $('.main-nav a[href*="#"]:not([href="#"])').click(function() {
-                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                    if (target.length) {
-                        $('html, body').animate({
-                            scrollTop: target.offset().top
-                        }, 1000);
-                        return false;
-                    }
-                }
-            });
-        });
-        var appMaster = {
-            menuToggler: function() {
-                // Menu Toggler
-                $('#menuToggler').on('click', function(e) {
-                    e.preventDefault();
-                    /* Act on the event */
-                    $('#wrapper').toggleClass('toggled');
-                });
-            },
-            anotherFunction: function() {
-                // Add you custom here and don't forget to change the object title (anotherFunction)
-            }
-        }
-    })(jQuery);
-    </script>
-
-<script>
-    async function getCrateDependencies(crateName, version) {
-      const url = `https://crates.io/api/v1/crates/${crateName}/${version}/dependencies`;
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`Error HTTP ${res.status}`);
-      const data = await res.json();
-      return data.dependencies.map(dep => ({
-        name: dep.crate_id,
-        version: dep.req,
-        kind: dep.kind
-      }));
-    }
-
-    async function loadDependencies() {
-      const container = document.getElementById('dependencies');
-      try {
-        const deps = await getCrateDependencies('proxyauth', '0.5.6');
-        const ul = document.createElement('ul');
-
-        deps.forEach(dep => {
-          if (dep.kind !== 'normal') return; // build/dev deps if needed
-
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = `https://crates.io/crates/${dep.name}/range/%5E${dep.version.replace("^", "")}`;
-          a.target = '_blank';
-          a.textContent = dep.name;
-
-          li.appendChild(a);
-          li.appendChild(document.createTextNode(` = "${dep.version}"`));
-          ul.appendChild(li);
-        });
-
-        container.innerHTML = '';
-        container.appendChild(ul);
-      } catch (e) {
-        console.error(e);
-        container.textContent = `Error load : ${e.message}`;
-      }
-    }
-
-    loadDependencies();
-
- $('#tooltip_left').tooltip();
-
-  $('#tooltip_left').on('shown.bs.tooltip', function () {
-    var $tooltip = $(this).data('bs.tooltip').$tip;
-
-    if ($tooltip && $tooltip.length) {
-      var currentLeft = parseInt($tooltip.css('left'), 10);
-
-      $tooltip[0].style.setProperty('left', (currentLeft - 40) + 'px', 'important');
-    }
-  });
-
-</script>
+    <script type="text/javascript" src="../../static/shCore.js"></script>
+    <script type="text/javascript" src="../../static/shBrushBash.js"></script>
+    <script type="text/javascript" src="../../static/shBrushCpp.js"></script>
+    <script type="text/javascript" src="../../static/shBrushCSharp.js"></script>
+    <script type="text/javascript" src="../../static/shBrushCss.js"></script>
+    <script type="text/javascript" src="../../static/shBrushDelphi.js"></script>
+    <script type="text/javascript" src="../../static/shBrushDiff.js"></script>
+    <script type="text/javascript" src="../../static/shBrushGroovy.js"></script>
+    <script type="text/javascript" src="../../static/shBrushJava.js"></script>
+    <script type="text/javascript" src="../../static/shBrushJScript.js"></script>
+    <script type="text/javascript" src="../../static/shBrushPhp.js"></script>
+    <script type="text/javascript" src="../../static/shBrushPlain.js"></script>
+    <script type="text/javascript" src="../../static/shBrushPython.js"></script>
+    <script type="text/javascript" src="../../static/shBrushRuby.js"></script>
+    <script type="text/javascript" src="../../static/shBrushScala.js"></script>
+    <script type="text/javascript" src="../../static/shBrushSql.js"></script>
+    <script type="text/javascript" src="../../static/shBrushVb.js"></script>
+    <script type="text/javascript" src="../../static/shBrushXml.js"></script>
+    <script type="text/javascript" src="../../static/shCore.js"></script>
+    <script type="text/javascript" src="../../static/shBrushJScript.js"></script>
+    <script type="text/javascript" src="../../static/custom2.js"></script>
 
 
 </body></html>

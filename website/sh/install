@@ -47,13 +47,23 @@ else
 fi
 
 echo "[*] Installing proxyauth using cargo..."
-cargo install --root /usr/local -j $(($(nproc) - 1)) proxyauth --force --no-track
+cargo install --root /usr/local -j $(($(nproc) - 2)) proxyauth --force --no-track
 
 # Ensure /usr/local/bin/proxyauth is executable
 sudo chmod +x /usr/local/bin/proxyauth
 
 echo "[*] Running 'proxyauth prepare'..."
 sudo /usr/local/bin/proxyauth prepare
+
+# prepare certs directory
+echo "[*] prepare certificats directory"
+sudo mkdir -p /etc/proxyauth/certs
+sudo chown proxyauth:proxyauth -R /etc/proxyauth/certs
+sudo openssl req -x509 -newkey rsa:2048 -sha256 -days 1 \
+            -nodes \
+            -keyout /etc/proxyauth/certs/key.pem \
+            -out /etc/proxyauth/certs/cert.pem \
+            -subj "/CN=localhost"
 
 # Check for systemd
 if pidof systemd > /dev/null; then
