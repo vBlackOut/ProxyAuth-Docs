@@ -127,13 +127,12 @@
                     <a href="#section_10" class="btn btn-raised btn-primary"> Dependancies Libs</a>
                 </li>
                 <li>
-                    <a href="#section_13" class="btn btn-raised btn-primary"> Benchmark v0.6.0</a>
+                    <a href="https://proxyauth.app/benchmark/index.html" target="_blank" class="btn btn-raised btn-primary"> Benchmark</a>
                 </li>
                 <li>
                     <a href="https://github.com/vBlackOut/ProxyAuth-Docs" class="btn btn-raised btn-primary"> Docs Contribution ❤️</a>
                 </li>
             </ul>
-
         </aside>
 
         <section id="section_00" class="section wb">
@@ -141,7 +140,7 @@
                 <div class="page-title text-center">
                     <h1>ProxyAuth</h1>
                     <ul class="breadcrumb">
-                        <li class="active">Lastest version 0.6.4</li>
+                        <li class="active">Lastest version 0.6.3</li>
                         <li class="active">License: Apache 2.0</li>
                         <li class="active">Author: Vladimir SOUCHET (vBlackOut)</li>
                     </ul>
@@ -366,7 +365,6 @@
   "port": 8080,
   "worker": 4,
   "log": {"type": "local"},
-  "stats: true,
   "ratelimit_auth": {
     "burst": 10,
     "block_delay": 500,
@@ -441,13 +439,6 @@
                             <div class="option">type: <code>loki</code> → use Loki logging <code>{"type": "loki", "host": "127.0.0.1:1234"}</code></div>
                             <div class="option" style="margin-left: 1rem;">
                                 <strong>Default:</strong> <code>local</code>
-                            </div>
-                        </details>
-                         <details open>
-                            <summary>stats</summary>
-                            <div class="option">boolean: <code>true/false</code> → do not use remote stats /adm/stats or proxyauth stats</div>
-                            <div class="option" style="margin-left: 1rem;">
-                                <strong>Default:</strong> <code>false</code>
                             </div>
                         </details>
                         <details open>
@@ -1152,55 +1143,6 @@
             <div class="row">
                 <div class="col-md-12">
                         <div id="dependencies">Chargement...</div>
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section><!-- end section -->
-
-     <section id="section_13" class="section wb">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="section-title">
-                          <h3>Benchmark v0.6.0 <br><small>The performance is not yet fully optimized, but improvements are planned. All tokens are actively monitored.</small></h3>
-                          <hr>
-                      </div><!-- end title -->
-                  </div>
-              </div><!-- end row -->
-
-            <div class="row">
-                <div class="col-md-12">
-                        <b>On Server (LOW CPU) ~ 185 000 requests/s</b> <br>
-                        <b>Configuration ProxyAuth</b>: 8 workers <br>
-                        <b>Network</b>: ~ 85 Mb/s<br>
-                        <b>Nb clients</b>: 500<br>
-                        <b>AVG Latency</b>: ~ 3 ms<br>
-                        <b>CPU</b>: Threadripper PRO 5995WX (64-cores, 128threads),<br>
-                        <b>RAM</b>: 512 Go DDR4 RAM LRDIMM<br>
-                        <b> Protocol</b>: H2 (HTTP/2)
-                        <img src="../../static/images/benchmark_0.6.0_8threads.png">
-
-                        <br><br>
-                        <b>On Server (Middle CPU) ~ 391 000 requests/s</b> <br>
-                        <b>Configuration ProxyAuth</b>: 64 workers (Middle CPU)<br>
-                        <b>Nb clients:</b> 500<br>
-                        <b>Network</b>: ~ 176 Mb/s<br>
-                        <b>AVG Latency</b>: ~ 1 ms<br>
-                        <b>CPU</b>: Threadripper PRO 5995WX (64-cores, 128-threads),<br>
-                        <b>RAM</b>: 512 Go DDR4 RAM LRDIMM<br>
-                        <b> Protocol</b>: H2 (HTTP/2)
-                        <img src="../../static/images/benchmark_0.6.0_fullcpu.png">
-
-                        <br><br>
-                        <b>On laptop (FULL CPU) ~ 30 000 requests/s</b> <br>
-                        <b>Configuration ProxyAuth</b>: 8 workers (FULL CPU)<br>
-                        <b>Nb clients:</b> 500<br>
-                        <b>Network</b>: ~ 15 Mb/s<br>
-                        <b>AVG Latency</b>: ~ 16 ms<br>
-                        <b>CPU</b>: INTEL i7-10510U (4-cores, 8-threads),<br>
-                        <b>RAM</b>: 32 Go DDR4 RAM<br>
-                        <b> Protocol</b>: H2 (HTTP/2)
-                        <img src="../../static/images/benchmark_proxyauth_0.6.0_laptop.png">
                 </div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
