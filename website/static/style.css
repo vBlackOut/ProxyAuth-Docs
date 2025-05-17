@@ -682,6 +682,8 @@ body.doc_wrapper .main-nav li {
     padding: 0;
     list-style: none;
     text-align: left;
+    position:relative;
+    top:-25px;
 }
 
 body.doc_wrapper .main-nav li i {
@@ -2302,3 +2304,76 @@ code-full {
 div.dropdown div.content ul.nav.nav-tabs li.active {
   background-color:grey;
 }
+
+
+
+  .label.badge-pill {
+    border-radius:1em;
+    margin:0 0.25em;
+  }
+    details {
+      background: #6A85B9;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .option {
+      margin-left: 1rem;
+      margin-top: 5px;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .viewer, .doc {
+      flex: 1;
+      min-width: 300px;
+    }
+    details div.option code {
+        font-size: 12px;
+    }
+
+    .stable_version {
+      position: relative;
+      left: 25px;
+      color: black;
+      font-size: 14px;
+      display: inline;
+    }
+
+    .stable_version span {
+      font-size: 10px;
+      color: black;
+      text-transform: uppercase;
+    }
+
+    .tooltip {
+      z-index: 999999;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    #version-display {
+      font-size: 15px;
+      display: block;
+    }
+
+    #version-select {
+      font-size: 14px;
+      position:relative;
+      top:-40px;
+      width: 80%;
+    }
