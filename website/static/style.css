@@ -2378,10 +2378,8 @@ div.dropdown div.content ul.nav.nav-tabs li.active {
       width: 80%;
     }
 
-    .no-work {
+/*    .no-work {
       position: relative;
-      /*width: 300px;*/
-      /*height: 200px;*/
       background: #333;
       margin: 20px;
       border: 2px solid #888;
@@ -2411,3 +2409,53 @@ div.dropdown div.content ul.nav.nav-tabs li.active {
       background-color: #000;
       text-align:center;
     }
+    */
+
+
+  .no-work {
+    position: relative;
+    background: #333;
+    color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    overflow: hidden; /* essentiel pour mobile */
+    min-height: 100px; /* éviter que l'overlay ne soit trop petit */
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(128, 128, 128, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none; /* ne bloque pas les touch events */
+  }
+
+  .overlay-text {
+    color: red;
+    font-size: 5vw; /* responsive */
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 4px black;
+    user-select: none;
+  }
+
+  @media (min-width: 600px) {
+    .overlay-text {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .overlay-text {
+      font-size: 18px;
+      background-color: #000;
+    }
+  }
+
