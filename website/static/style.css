@@ -661,7 +661,7 @@ body.doc_wrapper #sideBar {
     left: 0;
     background: #64676c;
     height: 100%;
-    /*overflow-y: auto;*/
+    overflow-y: auto;
     -webkit-transition: all .25s ease-in-out;
     -moz-transition: all .25s ease-in-out;
     transition: all .25s ease-in-out;
@@ -2407,4 +2407,7 @@ div.dropdown div.content ul.nav.nav-tabs li.active {
       font-weight: bold;
       font-size: 24px;
       text-shadow: 1px 1px 2px black;
+      width: 30%;
+      background-color: #000;
+      text-align:center;
     }

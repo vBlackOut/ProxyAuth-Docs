@@ -10,7 +10,7 @@
 
             const text = document.createElement('div');
             text.className = 'overlay-text';
-            text.textContent = 'NO WORKING ON THIS VERSION';
+            text.textContent = '⚠️ NO WORKING ON THIS VERSION ⚠️';
 
             overlay.appendChild(text);
             noWorkElement.appendChild(overlay);
