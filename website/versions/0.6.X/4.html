@@ -82,16 +82,6 @@
                     <a href="/"> ProxyAuth <span id="version-display"></span><small>Proxy Authenticate Token</small></a>
                 </li>
 
-<<<<<<< HEAD
-                <select id="version-select">
-                  <option value="">-- Choose a version --</option>
-                    <option value="0.6.X/3.html">v0.6.3</option>
-                    <option value="0.6.X/0.html">v0.6.0</option>
-                    <option value="0.5.X">v0.5.X</option>
-                </select><br>
-
-=======
->>>>>>> 342e3a8 (Update docs)
                 <!-- Search -->
                 <li>
                     <a href="#section_01" class="btn btn-raised btn-primary"> Getting Started</a>
@@ -136,10 +126,6 @@
                     <a href="https://github.com/vBlackOut/ProxyAuth-Docs" class="btn btn-raised btn-primary"> Docs Contribution ❤️</a>
                 </li>
             </ul>
-<<<<<<< HEAD
-
-=======
->>>>>>> 342e3a8 (Update docs)
         </aside>
 
         <section id="section_00" class="section wb">
@@ -319,11 +305,7 @@
                                 <code><span class="comment"> // show stats</span></code>
                               </div>
                               <div class="line alt1">
-<<<<<<< HEAD
-                                <code><span class="number">$</span>curl -H 'X-Auth-Token: [YOUR_TOKEN_ADMIN]' https://127.0.0.1:8080/adm/stats</code>
-=======
                                 <code><span class="number">$</span>curl -k -H 'X-Auth-Token: [YOUR_TOKEN_ADMIN]' https://127.0.0.1:8080/adm/stats</code>
->>>>>>> 342e3a8 (Update docs)
                               </div>
                               <div class="line alt1">
                                 <code><span class="number">response</span><pre>[
@@ -376,10 +358,6 @@
   "port": 8080,
   "worker": 4,
   "log": {"type": "local"},
-<<<<<<< HEAD
-  "stats: true,
-=======
->>>>>>> 342e3a8 (Update docs)
   "ratelimit_auth": {
     "burst": 10,
     "block_delay": 500,
@@ -456,16 +434,6 @@
                                 <strong>Default:</strong> <code>local</code>
                             </div>
                         </details>
-<<<<<<< HEAD
-                         <details open>
-                            <summary>stats</summary>
-                            <div class="option">boolean: <code>true/false</code> → do not use remote stats /adm/stats or proxyauth stats</div>
-                            <div class="option" style="margin-left: 1rem;">
-                                <strong>Default:</strong> <code>false</code>
-                            </div>
-                        </details>
-=======
->>>>>>> 342e3a8 (Update docs)
                         <details open>
                             <summary>ratelimit_auth</summary>
                             <div class="option">
@@ -639,11 +607,7 @@
                                         <code><span class="comment">// default login is admin and admin123 change this in config.json</span></code>
                                       </div>
                                       <div class="line alt1">
-<<<<<<< HEAD
-                                        <code><span class="number">$</span>curl -X POST https://127.0.0.1:8080/auth -H "Content-Type: application/json" -d '{"username": "admin", "password": "admin123"}'</code>
-=======
                                         <code><span class="number">$</span>curl -k -X POST https://127.0.0.1:8080/auth -H "Content-Type: application/json" -d '{"username": "admin", "password": "admin123"}'</code>
->>>>>>> 342e3a8 (Update docs)
                                       </div>
                                   </div>
                                 </div>
@@ -1176,58 +1140,6 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end section -->
-<<<<<<< HEAD
-
-     <section id="section_13" class="section wb">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="section-title">
-                          <h3>Benchmark v0.6.0 <br><small>The performance is not yet fully optimized, but improvements are planned. All tokens are actively monitored.</small></h3>
-                          <hr>
-                      </div><!-- end title -->
-                  </div>
-              </div><!-- end row -->
-
-            <div class="row">
-                <div class="col-md-12">
-                        <b>On Server (LOW CPU) ~ 185 000 requests/s</b> <br>
-                        <b>Configuration ProxyAuth</b>: 8 workers <br>
-                        <b>Network</b>: ~ 85 Mb/s<br>
-                        <b>Nb clients</b>: 500<br>
-                        <b>AVG Latency</b>: ~ 3 ms<br>
-                        <b>CPU</b>: Threadripper PRO 5995WX (64-cores, 128threads),<br>
-                        <b>RAM</b>: 512 Go DDR4 RAM LRDIMM<br>
-                        <b> Protocol</b>: H2 (HTTP/2)
-                        <img src="../../static/images/benchmark_0.6.0_8threads.png">
-
-                        <br><br>
-                        <b>On Server (Middle CPU) ~ 391 000 requests/s</b> <br>
-                        <b>Configuration ProxyAuth</b>: 64 workers (Middle CPU)<br>
-                        <b>Nb clients:</b> 500<br>
-                        <b>Network</b>: ~ 176 Mb/s<br>
-                        <b>AVG Latency</b>: ~ 1 ms<br>
-                        <b>CPU</b>: Threadripper PRO 5995WX (64-cores, 128-threads),<br>
-                        <b>RAM</b>: 512 Go DDR4 RAM LRDIMM<br>
-                        <b> Protocol</b>: H2 (HTTP/2)
-                        <img src="../../static/images/benchmark_0.6.0_fullcpu.png">
-
-                        <br><br>
-                        <b>On laptop (FULL CPU) ~ 30 000 requests/s</b> <br>
-                        <b>Configuration ProxyAuth</b>: 8 workers (FULL CPU)<br>
-                        <b>Nb clients:</b> 500<br>
-                        <b>Network</b>: ~ 15 Mb/s<br>
-                        <b>AVG Latency</b>: ~ 16 ms<br>
-                        <b>CPU</b>: INTEL i7-10510U (4-cores, 8-threads),<br>
-                        <b>RAM</b>: 32 Go DDR4 RAM<br>
-                        <b> Protocol</b>: H2 (HTTP/2)
-                        <img src="../../static/images/benchmark_proxyauth_0.6.0_laptop.png">
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section><!-- end section -->
-=======
->>>>>>> 342e3a8 (Update docs)
     </div>
     <!-- end wrapper -->
 

@@ -2,6 +2,20 @@
 "use strict";
     $(document).ready(function() {
 
+
+
+          document.querySelectorAll('.no-work').forEach(noWorkElement => {
+            const overlay = document.createElement('div');
+            overlay.className = 'overlay';
+
+            const text = document.createElement('div');
+            text.className = 'overlay-text';
+            text.textContent = 'NO WORKING ON THIS VERSION';
+
+            overlay.appendChild(text);
+            noWorkElement.appendChild(overlay);
+          });
+
         // select versions
         const versionSelect = document.getElementById('version-select');
         if (versionSelect) {
