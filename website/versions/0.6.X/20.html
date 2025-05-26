@@ -83,16 +83,7 @@
                 <li class="nav-brand">
                     <a href="/"> ProxyAuth <span id="version-display"></span><small>Proxy Authenticate Token</small></a>
                 </li>
-<<<<<<<< HEAD:website/versions/0.6.X/8.html
-
-                <select id="version-select">
-                  <option value="">-- Choose a version --</option>
-                    <option value="0.6.X/8.html">v0.6.8</option>
-                </select><br>
-
-========
                 
->>>>>>>> 515f14a (Update docs):website/versions/0.6.X/20.html
                 <!-- Search -->
                 <li>
                     <a href="#section_01" class="btn btn-raised btn-primary"> Getting Started</a>
@@ -148,11 +139,7 @@
                 <div class="page-title text-center">
                     <h1>ProxyAuth</h1>
                     <ul class="breadcrumb">
-<<<<<<<< HEAD:website/versions/0.6.X/8.html
-                        <li class="active">Lastest version 0.6.8</li>
-========
                         <li class="active">Lastest version 0.6.20</li>
->>>>>>>> 515f14a (Update docs):website/versions/0.6.X/20.html
                         <li class="active">License: Apache 2.0</li>
                         <li class="active">Author: Vladimir SOUCHET (vBlackOut)</li>
                     </ul>
@@ -376,10 +363,7 @@
   "worker": 4,
   "log": {"type": "local"},
   "stats: true,
-<<<<<<<< HEAD:website/versions/0.6.X/8.html
-========
   "max_idle_per_host": 200,
->>>>>>>> 515f14a (Update docs):website/versions/0.6.X/20.html
   "ratelimit_auth": {
     "burst": 10,
     "block_delay": 500,
@@ -462,8 +446,6 @@
                                 <strong>Default:</strong> <code>false</code>
                             </div>
                         </details>
-<<<<<<<< HEAD:website/versions/0.6.X/8.html
-========
                         <details open>
                            <summary>max_idle_per_host</summary>
                            <div class="option">int: <code>0-3000</code> → defines the maximum number of idle (keep-alive) connections that can be kept open per host. This helps optimize performance by reusing connections instead of opening new ones for each request, while also preventing excessive resource usage by limiting the number of unused open connections.</div>
@@ -471,7 +453,6 @@
                                <strong>Default:</strong> <code>50</code>
                            </div>
                        </details>
->>>>>>>> 515f14a (Update docs):website/versions/0.6.X/20.html
                         <details open>
                             <summary>ratelimit_auth</summary>
                             <div class="option">
@@ -978,17 +959,7 @@
 
                         <div style="background: #2d2d2d; color: #ccc; font-family: monospace; overflow-x: auto; margin: auto;">
                           <pre style="margin: 0; line-height: 1.5;">
-                        -----------------------------------------------------------------------------------------
-                        Version 0.6.8
-                        -----------------------------------------------------------------------------------------
-                            [ADD] Download default config from proxyauth.app
-                                  Check build version status via proxyauth.app to detect invalid or yanked versions.
-                                  Allows blocking specific versions during the build process if marked as such.
 
-<<<<<<<< HEAD:website/versions/0.6.X/8.html
-                             PS: I'm tired, going to sleep now 🙂 Sorry for deploying so many versions
-                                 in such a short time but it's better to keep improving, it's not finished yet...
-========
                         -----------------------------------------------------------------------------------------
                         Version 0.6.9
                         -----------------------------------------------------------------------------------------
@@ -1003,7 +974,6 @@
                             [ADD] Download default config from proxyauth.app
                                   Check build version status via proxyauth.app to detect invalid or yanked versions.
                                   Allows blocking specific versions during the build process if marked as such.
->>>>>>>> 515f14a (Update docs):website/versions/0.6.X/20.html
 
                         -----------------------------------------------------------------------------------------
                         Version 0.6.5
@@ -1262,60 +1232,6 @@
         </div><!-- end container -->
     </section><!-- end section -->
 
-<<<<<<<< HEAD:website/versions/0.6.X/8.html
-<<<<<<< HEAD:website/versions/0.6.X/8.html
-=======
-     <section id="section_13" class="section wb">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="section-title">
-                          <h3>Benchmark v0.6.0 <br><small>The performance is not yet fully optimized, but improvements are planned. All tokens are actively monitored.</small></h3>
-                          <hr>
-                      </div><!-- end title -->
-                  </div>
-              </div><!-- end row -->
-
-            <div class="row">
-                <div class="col-md-12">
-                        <b>On Server (LOW CPU) ~ 185 000 requests/s</b> <br>
-                        <b>Configuration ProxyAuth</b>: 8 workers <br>
-                        <b>Network</b>: ~ 85 Mb/s<br>
-                        <b>Nb clients</b>: 500<br>
-                        <b>AVG Latency</b>: ~ 3 ms<br>
-                        <b>CPU</b>: Threadripper PRO 5995WX (64-cores, 128threads),<br>
-                        <b>RAM</b>: 512 Go DDR4 RAM LRDIMM<br>
-                        <b> Protocol</b>: H2 (HTTP/2)
-                        <img src="../../static/images/benchmark_0.6.0_8threads.png">
-
-                        <br><br>
-                        <b>On Server (Middle CPU) ~ 391 000 requests/s</b> <br>
-                        <b>Configuration ProxyAuth</b>: 64 workers (Middle CPU)<br>
-                        <b>Nb clients:</b> 500<br>
-                        <b>Network</b>: ~ 176 Mb/s<br>
-                        <b>AVG Latency</b>: ~ 1 ms<br>
-                        <b>CPU</b>: Threadripper PRO 5995WX (64-cores, 128-threads),<br>
-                        <b>RAM</b>: 512 Go DDR4 RAM LRDIMM<br>
-                        <b> Protocol</b>: H2 (HTTP/2)
-                        <img src="../../static/images/benchmark_0.6.0_fullcpu.png">
-
-                        <br><br>
-                        <b>On laptop (FULL CPU) ~ 30 000 requests/s</b> <br>
-                        <b>Configuration ProxyAuth</b>: 8 workers (FULL CPU)<br>
-                        <b>Nb clients:</b> 500<br>
-                        <b>Network</b>: ~ 15 Mb/s<br>
-                        <b>AVG Latency</b>: ~ 16 ms<br>
-                        <b>CPU</b>: INTEL i7-10510U (4-cores, 8-threads),<br>
-                        <b>RAM</b>: 32 Go DDR4 RAM<br>
-                        <b> Protocol</b>: H2 (HTTP/2)
-                        <img src="../../static/images/benchmark_proxyauth_0.6.0_laptop.png">
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section><!-- end section -->
->>>>>>> dbe4174 (Update docs):website/versions/0.6.X/index.html
-========
->>>>>>>> 515f14a (Update docs):website/versions/0.6.X/20.html
     </div>
     <!-- end wrapper -->
 
