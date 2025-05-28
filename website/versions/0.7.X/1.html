@@ -84,6 +84,13 @@
                     <a href="/"> ProxyAuth <span id="version-display"></span><small>Proxy Authenticate Token</small></a>
                 </li>
 
+                <select id="version-select">
+                  <option value="">-- Choose a version --</option>
+                    <option value="0.7.X/1.html">v0.7.1</option>
+                    <option value="0.6.X/21.html">v0.6.21</option>
+                    <option value="0.6.X/20.html">v0.6.20</option>
+                </select><br>
+
                 <!-- Search -->
                 <li>
                     <a href="#section_01" class="btn btn-raised btn-primary"> Getting Started</a>
@@ -139,7 +146,7 @@
                 <div class="page-title text-center">
                     <h1>ProxyAuth</h1>
                     <ul class="breadcrumb">
-                        <li class="active">Lastest version 0.6.21</li>
+                        <li class="active">Lastest version 0.7.1</li>
                         <li class="active">License: Apache 2.0</li>
                         <li class="active">Author: Vladimir SOUCHET (vBlackOut)</li>
                     </ul>
@@ -232,7 +239,7 @@
                                 <code><span class="comment"> // use a specific version with @x.x.x (must be >= 0.5.6) versions lower than 0.5.6 are not supported.</span></code>
                               </div>
                               <div class="line alt1">
-                                <code><span class="number">$</span>curl -fsSL https://proxyauth.app/sh/install@0.6.21 | bash</code>
+                                <code><span class="number">$</span>curl -fsSL https://proxyauth.app/sh/install@0.7.0 | bash</code>
                               </div>
                           </div>
                           <br>
@@ -306,7 +313,7 @@
                         </div>
                           Used to display token usage statistics. In previous versions, it was possible to revoke a specific token ID.<br>
                           Example: The user "<b>admin</b>" has used the token ID "<b>AVzjugA=yY!$#...</b>" a total of <b>2 times</b>.<br>
-                          <img src="../../static/images/proxy_auth_stats.png"><br><br>
+                          <img src="../../static/images/proxy_auth_stats2.png"><br><br>
 
                           <h4><b>curl give stats</b></h4>
                           The admin token is in <b>/etc/proxyauth/config/config.json</b> (automatically created at launch).<br>
@@ -323,12 +330,15 @@
     "user": "admin",
     "tokens": [
       {
-        "token_id": "AVzjugA=yY!...",
-        "count": 2
+        "token_id": "QzK=8S*lx9A@gebUZBB%m$a5+uo@lPx*F+d2QdCssbA+sl(R",
+        "count": 1,
+        "delivery_at": "2025-05-28T18:18:02.251295314Z",
+        "expire_at": "2025-05-28T19:17:47Z"
       }
     ]
   }
-]</pre></code>
+]
+</pre></code>
                               </div>
                           </div>
 
@@ -370,6 +380,7 @@
   "log": {"type": "local"},
   "stats: true,
   "max_idle_per_host": 200,
+  "timezone": "Europe/Paris",
   "ratelimit_auth": {
     "burst": 10,
     "block_delay": 500,
@@ -423,6 +434,16 @@
                                 <strong>Default:</strong> <code>0.0.0.0</code>
                             </div>
                         </details>
+                        <details open>
+                          <summary>timezone</summary>
+                          <div class="option"> A <strong>timezone</strong> defines how a specific region offsets from UTC (Coordinated Universal Time). <br>
+                              you can select a timezone like <code>Europe/Paris</code>, <code>UTC</code>, or <code>America/New_York</code> to properly convert and display timestamps in local time.<br>
+                              <a style="color:white;" target="_blank" href="https://docs.rs/chrono-tz/latest/chrono_tz/enum.Tz.html#variants"><strong> [ show all possible value ]</strong></a>
+                          </div>
+                          <div class="option" style="margin-left: 1rem;">
+                              <strong>Default:</strong> <code>Europe/Paris</code>
+                          </div>
+                      </details>
                         <details open>
                             <summary>port</summary>
                             <div class="option">Valid range: 1–65535</div>
@@ -511,6 +532,9 @@
   - prefix: "/api_test/openapi.json"
     target: "http://localhost:8000/api_test/openapi.json"
     secure: false
+    backends:
+      - http://localhost:8001/api_test/openapi.json
+      - http://localhost:8002/api_test/openapi.json
 
   - prefix: "/api_test_default"
     target: "http://localhost:8000/api_test_default"
@@ -539,6 +563,13 @@
                         <details open>
                             <summary><strong>target</strong> <span class="label label-danger badge-pill">* Required</span></summary>
                             <div class="option">Specifies the destination URL or service that will receive the forwarded request.</div>
+                            <div class="option" style="margin-left: 1rem;color:red;">
+                            </div>
+                        </details>
+
+                        <details open>
+                            <summary><strong>backends</strong> </summary>
+                            <div class="option">Defines a failover mechanism by providing alternative URLs or services. In the event of a failure or downtime of the primary service, requests will be redirected to a secondary target, ensuring fault tolerance and service continuity.</div>
                             <div class="option" style="margin-left: 1rem;color:red;">
                             </div>
                         </details>
@@ -965,6 +996,13 @@
 
                         <div style="background: #2d2d2d; color: #ccc; font-family: monospace; overflow-x: auto; margin: auto;">
                           <pre style="margin: 0; line-height: 1.5;">
+
+                        -----------------------------------------------------------------------------------------
+                        Version 0.7.1
+                        -----------------------------------------------------------------------------------------
+                            [ADD] Failover to backup backends if the primary route is unreachable.
+                            [ADD] Timezone support when creating tokens.
+                            [ADD] Token stats now include expire_at and delivery_at fields.
 
                         -----------------------------------------------------------------------------------------
                         Version 0.6.21

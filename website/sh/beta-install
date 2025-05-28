@@ -46,10 +46,9 @@ else
     echo "[*] cargo is already installed."
 fi
 
-
 # download url proxyauth
 echo "[*] Downloading ProxyAuth..."
-URL="https://crates.proxyauth.app/downloads/latest/proxyauth"
+URL="https://crates.proxyauth.app/downloads/latest-beta/proxyauth"
 out_dir="/tmp"
 
 # give real name in header
@@ -61,8 +60,8 @@ filename=$(curl -fsSL -OJ -w '%{filename_effective}' "$URL") || {
 # move inside the tmp file
 mv "$filename" "$out_dir/"
 
-echo "[*] Checking hash $filename..."
-if ! curl -fsSL  https://crates.proxyauth.app/downloads/latest/proxyauth/hash | (cd /tmp && sha256sum -c -); then
+echo "[*] Checking hash file $filename..."
+if ! curl -fsSL  https://crates.proxyauth.app/downloads/latest-beta/proxyauth/hash | (cd /tmp && sha256sum -c -); then
     echo "[*] Error Checksum ProxyAuth failed"
     rm -f "/tmp/$filename"
     exit 1
