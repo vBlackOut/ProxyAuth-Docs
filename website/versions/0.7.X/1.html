@@ -15,8 +15,8 @@
 
     <!-- Site Metas -->
     <title>ProxyAuth | Documentation</title>
-    <meta name="keywords" content="proxy, security, token, documentation, proxyauth">
-    <meta name="description" content="Official Documentation for ProxyAuth.">
+    <meta name="keywords" content="proxy, security, token, documentation, proxyauth, rust">
+    <meta name="description" content="Documentation for ProxyAuth (Rust).">
     <meta name="author" content="vBlackOut">
 
     <!-- Material Design fonts -->
@@ -153,7 +153,8 @@
 
                     <ul class="breadcrumb">
                       <li class="active"> <a href="https://github.com/ProxyAuth/ProxyAuth" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg> Github</a></li>
-                      <li><a href="https://crates.proxyauth.app/crates">ProxyAuth Crates</a></li>
+                      <li><a href="https://crates.proxyauth.app/crate?name=proxyauth">Official Crates</a></li>
+                      <li><a href="https://crates.io/crates/proxyauth">Crates.io</a></li>
                       <li><a href="#section_09">Changelog</a></li>
                     </ul>
 
@@ -184,6 +185,9 @@
                                 <li>ProxyAuth performs <b>ultra-fast token verification.</b> 🚀</li>
                                 <li>ProxyAuth is written in <b>Rust</b>! 🦀</li>
                             </ol>
+
+                            <!--Video<br>
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/c7TgORvS-0U?si=R499V5IplTlPFs8t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
                         </div><!-- end contact-widget -->
                     </div><!-- end col -->
 
@@ -250,7 +254,13 @@
                                 <code><span class="comment"> // clone the project</span></code>
                               </div>
                               <div class="line alt1">
-                                <code><span class="number">$</span>git clone https://github.com/vBlackOut/ProxyAuth && cd ProxyAuth/</code>
+                                <code><span class="number">$</span>git clone https://github.com/ProxyAuth/Docker ProxyAuth && cd ProxyAuth/latest</code>
+                              </div>
+                              <div class="line alt1 p1">
+                                <code><span class="comment"> // ⚠️ important: Ensure correct permissions on the configuration file owned by the proxyauth user inside the container.</span></code>
+                              </div>
+                              <div class="line alt1">
+                                <code><span class="number">$</span>sudo chown 1000:1000 config/config.json config/routes.yml</code>
                               </div>
                               <div class="line alt1 p1">
                                 <code><span class="comment"> // build & launch proxyauth inside docker container</span></code>
@@ -794,7 +804,7 @@
                                   <code><span class="comment">// use route in routes.yml</span></code>
                                 </div>
                                 <div class="line alt1">
-                                  <code><span class="number">$</span>curl -X GET http://127.0.0.1:8080/api_test -H "Authorization: Bearer YOUR_TOKEN_HERE"</code>
+                                  <code><span class="number">$</span>curl -k -X GET https://127.0.0.1:8080/api_test -H "Authorization: Bearer YOUR_TOKEN_HERE"</code>
                                 </div>
                             </div>
                           </div>
