@@ -473,6 +473,7 @@
   "host": "0.0.0.0",
   "port": 8080,
   "worker": 4,
+  "login_via_otp": false;
   "log": {"type": "local"},
   "stats: true,
   "max_idle_per_host": 200,
@@ -524,6 +525,16 @@
                             </div>
                         </details>
                         <details open>
+                            <summary>log_via_otp</summary>
+                            <div class="option">
+                                Enable or disable logging of OTP login attempts.
+                            </div>
+                            <div class="option">Valid values: <code>true</code> or <code>false</code></div>
+                            <div class="option" style="margin-left: 1rem;">
+                                <strong>Default:</strong> <code>false</code>
+                            </div>
+                        </details>
+                        <details open>
                             <summary>host</summary>
                             <div class="option">IP address where the server listens</div>
                             <div class="option" style="margin-left: 1rem;">
@@ -555,13 +566,14 @@
                             </div>
                         </details>
                         <details open>
-                            <summary>log</summary>
-                            <div class="option">type: <code>local</code> → do not use remote logging</div>
-                            <div class="option">type: <code>loki</code> → use Loki logging <code>{"type": "loki", "host": "127.0.0.1:1234"}</code></div>
-                            <div class="option" style="margin-left: 1rem;">
-                                <strong>Default:</strong> <code>local</code>
-                            </div>
-                        </details>
+                          <summary>log</summary>
+                          <div class="option">type: <code>local</code> → do not use remote logging</div>
+                          <div class="option">type: <code>loki</code> → use Loki logging <code>{"type": "loki", "host": "127.0.0.1:1234"}</code></div>
+                          <div class="option">type: <code>http</code> → send logs via HTTP POST <code>{"type": "http", "max_writes_log": 10000}</code></div>
+                          <div class="option" style="margin-left: 1rem;">
+                              <strong>Default:</strong> <code>local</code>
+                          </div>
+                      </details>
                          <details open>
                             <summary>stats</summary>
                             <div class="option">boolean: <code>true/false</code> → do not use remote stats /adm/stats or proxyauth stats</div>
